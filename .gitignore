@@ -1,0 +1,6 @@
+venv/
+src/__pycache__/
+src/config.py
+
+.vscode/
+.idea/
