@@ -7,7 +7,7 @@ import config
 
 headers = { # Da documentazione API
     "accept": "application/json",
-    "Authorization": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MDRmNjViYzc2MjgwYjdjNTgwOWU3ODMyZGRjMzRkOCIsIm5iZiI6MTY0NTEwOTI2NS4zNjIsInN1YiI6IjYyMGU2MDExZjc5NGFkMDA2YWMwMTRmNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Ln5tzSqLmjK2wx5d3132fAS9S5AEUlmiX_w38LbpEfI"
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MDRmNjViYzc2MjgwYjdjNTgwOWU3ODMyZGRjMzRkOCIsIm5iZiI6MTY0NTEwOTI2NS4zNjIsInN1YiI6IjYyMGU2MDExZjc5NGFkMDA2YWMwMTRmNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Ln5tzSqLmjK2wx5d3132fAS9S5AEUlmiX_w38LbpEfI"
 }
 
 try:
