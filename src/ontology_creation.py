@@ -42,55 +42,61 @@ with onto: # per evitare di scrivere (namespace = onto) in ogni classe, si scriv
         domain = [Film]
         range = [Genre]
 
-    class filmTitle(FunctionalProperty):
+    class filmTitle(DataProperty, FunctionalProperty):
         domain = [Film]
         range = [str]
-    class tmdbRating(FunctionalProperty):
+    class tmdbRating(DataProperty, FunctionalProperty):
         domain = [Film]
         range = [float]
-    class budget(FunctionalProperty):
+    class budget(DataProperty, FunctionalProperty):
         domain = [Film]
         range = [int]
-    class revenue(FunctionalProperty):
+    class revenue(DataProperty, FunctionalProperty):
         domain = [Film]
         range = [int]
-    class releaseDate(FunctionalProperty):
+    class releaseDate(DataProperty, FunctionalProperty):
         domain = [Film]
         range = [datetime.date]
-    class runtime(FunctionalProperty):
+    class runtime(DataProperty, FunctionalProperty):
         domain = [Film]
         range = [int]
 
-    class personName(FunctionalProperty):
+    class personName(DataProperty, FunctionalProperty):
         domain = [Person]
         range = [str]
-    class birthDate(FunctionalProperty):
-        domain = [Person]
-        range = [datetime.date]
-    class careerStartDate(FunctionalProperty):
-        domain = [Person]
-        range = [datetime.date]
-    class nationality(FunctionalProperty):
+    class personTmdbID(DataProperty, FunctionalProperty):
         domain = [Person]
         range = [str]
-    class nAwards(FunctionalProperty):
+    class personGender(DataProperty, FunctionalProperty): # 1 Donna, 2 Uomo, 3 Non-binario, 0 Non specificato
+        domain = [Person]
+        range = [int]
+    class birthDate(DataProperty, FunctionalProperty):
+        domain = [Person]
+        range = [datetime.date]
+    class careerStartYear(DataProperty, FunctionalProperty):
+        domain = [Person]
+        range = [int]
+    class nationality(DataProperty, FunctionalProperty):
+        domain = [Person]
+        range = [str]
+    class nAwards(DataProperty, FunctionalProperty):
         domain = [Person]
         range = [int]
     
-    class avgRatingOfDirectedFilms(FunctionalProperty):
+    class avgRatingOfDirectedFilms(DataProperty, FunctionalProperty):
         domain = [Director]
         range = [float]
-    class nFilmsDirected(FunctionalProperty):
+    class nFilmsDirected(DataProperty, FunctionalProperty):
         domain = [Director]
         range = [int]
-    class nFilmsActed(FunctionalProperty):
+    class nFilmsActed(DataProperty, FunctionalProperty):
         domain = [Actor]
         range = [int]
 
-    class awardName(FunctionalProperty):
+    class awardName(DataProperty, FunctionalProperty):
         domain = [Award]
         range = [str]
-    class awardYear(FunctionalProperty):
+    class awardYear(DataProperty, FunctionalProperty):
         domain = [Award]
         range = [int]
     

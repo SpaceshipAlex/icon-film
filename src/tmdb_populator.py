@@ -1,14 +1,11 @@
-import requests
 from owlready2 import *
-import time
 import datetime
-
-import config # dove si trova la API key
+import utils
 
 ONTO_FILENAME = "movie_rating_ontology.owl"
 ONTO_PATH = os.path.join("ontology", ONTO_FILENAME)
 RATING_BANDS = [(0, 3.4), (3.5, 5.4), (5.5, 6.9), (7.0, 8.4), (8.5, 10.0)] # fasce di voti secondo le quali effettuare il popolamento
-MOVIES_PER_BAND = 2 # numero di film da prelevare per ognuna delle fasce
+MOVIES_PER_BAND = 3 # numero di film da prelevare per ognuna delle fasce
 
 onto = get_ontology(ONTO_PATH).load()
 
@@ -18,23 +15,6 @@ createdPersons = {}
 createdStudios = {}
 createdGenres = {}
 fetchedMovieIDs = set()
-
-# Esegue una query all'API TMDb
-def getTMDBData(endpoint, params = None): 
-    if params is None:
-        params = {}
-    headers = { # Da documentazione API
-    "accept": "application/json",
-    "Authorization": f"Bearer {config.TMDB_API_KEY}"
-    }
-    try:
-        response = requests.get(f"{config.TMDB_BASE_URL}/{endpoint}", params = params, headers = headers)
-        response.raise_for_status()
-        time.sleep(0.1) # Max 10 richieste al secondo
-        return response.json()
-    except requests.exceptions.RequestException as e:
-        print(f"Errore API TMDb: {e} per endpoint {endpoint} con parametri {params}")
-        return None
     
 # Sanifica un nome sostituendo tutti i caratteri non alfanumerici (c.isalnum() = false) con un trattino basso, in modo da renderli adatti per l'IRI dell'ontologia
 def sanitizeName(name):
@@ -43,7 +23,7 @@ def sanitizeName(name):
 
 # Richiede i dettagli del film all'API e aggiunge tutti i dati necessari alla KB  
 def fetchAndAddMovie(movieID):
-    movieDetails = getTMDBData(f"movie/{movieID}", params = {'append_to_response': 'credits,keywords'})
+    movieDetails = utils.getTMDBData(f"movie/{movieID}", params = {'append_to_response': 'credits,keywords'})
     if movieDetails:
         with onto:
             filmTitleSanitized = sanitizeName(movieDetails.get('title'))
@@ -53,14 +33,14 @@ def fetchAndAddMovie(movieID):
             currentFilm = onto.search_one(iri = f"*{filmIRI}")
             if not currentFilm:
                 currentFilm = onto.Film(filmIRI)
-            currentFilm.title = [movieDetails.get('title')]
-            currentFilm.tmdbRating = [float(movieDetails.get('vote_average', 0.0))]
-            currentFilm.budget = [int(movieDetails.get('budget', 0))]
-            currentFilm.revenue = [int(movieDetails.get('revenue', 0))]
-            currentFilm.runtime = [int(movieDetails.get('runtime', 0))]
+            currentFilm.title = movieDetails.get('title')
+            currentFilm.tmdbRating = float(movieDetails.get('vote_average', 0.0))
+            currentFilm.budget = int(movieDetails.get('budget', 0))
+            currentFilm.revenue = int(movieDetails.get('revenue', 0))
+            currentFilm.runtime = int(movieDetails.get('runtime', 0))
             if movieDetails.get('release_date'):
                 try:
-                    currentFilm.releaseDate = [datetime.datetime.strptime(movieDetails.get('release_date'), '%Y-%m-%d').date()]
+                    currentFilm.releaseDate = datetime.datetime.strptime(movieDetails.get('release_date'), '%Y-%m-%d').date()
                 except ValueError:
                     print(f"Formato della data di uscita non valido per {movieDetails.get('title')}")
             
@@ -86,6 +66,7 @@ def fetchAndAddMovie(movieID):
             if directorData:
                 directorName = directorData.get('name')
                 directorID = directorData.get('id')
+                directorGender = directorData.get('gender')
                 personKey = (str(directorID), "Director")
 
                 if personKey not in createdPersons:
@@ -93,15 +74,18 @@ def fetchAndAddMovie(movieID):
                     currentDirector = onto.search_one(iri = f"*{directorIRI}")
                     if not currentDirector:
                         currentDirector = onto.Director(directorIRI)
-                        currentDirector.personName = [directorName]
+                        currentDirector.personName = directorName
+                        currentDirector.personTmdbID = directorID
+                        currentDirector.personGender = directorGender
                     createdPersons[personKey] = currentDirector
 
                 currentFilm.hasDirector.append(createdPersons[personKey])
 
             # Ottengo i primi 5 attori listati e li aggiungo al dizionario e alla KB, se non esistono
             for actorData in movieDetails.get('credits', {}).get('cast', [])[:5]:
-                actorName = directorData.get('name')
-                actorID = directorData.get('id')
+                actorName = actorData.get('name')
+                actorID = actorData.get('id')
+                actorGender = actorData.get('gender')
                 personKey = (str(actorID), "Actor")
 
                 if personKey not in createdPersons:
@@ -109,7 +93,9 @@ def fetchAndAddMovie(movieID):
                     currentActor = onto.search_one(iri = f"*{actorIRI}")
                     if not currentActor:
                         currentActor = onto.Actor(actorIRI)
-                        currentActor.personName = [actorName]
+                        currentActor.personName = actorName
+                        currentActor.personTmdbID = actorID
+                        currentActor.personGender = actorGender
                     createdPersons[personKey] = currentActor
 
                 currentFilm.hasActor.append(createdPersons[personKey])
@@ -145,7 +131,7 @@ for min_rating, max_rating in RATING_BANDS: # per ognuna delle fasce di voti
             'page': page,
             'language': 'it-IT'
         }
-        data = getTMDBData("discover/movie", discoverParams) # ottengo i dati da TMDB
+        data = utils.getTMDBData("discover/movie", discoverParams) # ottengo i dati da TMDB
 
         if not data or not data.get('results'): 
             print(f"Fine dei film trovati nella fascia ({min_rating}, {max_rating}) a pagina {page}\n\n")

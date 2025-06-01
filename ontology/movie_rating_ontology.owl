@@ -34,6 +34,114 @@
   <rdfs:range rdf:resource="#Genre"/>
 </owl:ObjectProperty>
 
+<owl:DatatypeProperty rdf:about="#filmTitle">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Film"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#tmdbRating">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Film"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#budget">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Film"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#revenue">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Film"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#releaseDate">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Film"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#runtime">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Film"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#personName">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#personTmdbID">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#personGender">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#birthDate">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#careerStartYear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#nationality">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#nAwards">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#avgRatingOfDirectedFilms">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Director"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#nFilmsDirected">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Director"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#nFilmsActed">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Actor"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#awardName">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Award"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#awardYear">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Award"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
 <owl:Class rdf:about="#Film">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
 </owl:Class>
@@ -62,109 +170,22 @@
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
 </owl:Class>
 
-<owl:Class rdf:about="#filmTitle">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Film"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-</owl:Class>
-
-<owl:Class rdf:about="#tmdbRating">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Film"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-</owl:Class>
-
-<owl:Class rdf:about="#budget">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Film"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-</owl:Class>
-
-<owl:Class rdf:about="#revenue">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Film"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-</owl:Class>
-
-<owl:Class rdf:about="#releaseDate">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Film"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
-</owl:Class>
-
-<owl:Class rdf:about="#runtime">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Film"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-</owl:Class>
-
-<owl:Class rdf:about="#personName">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Person"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-</owl:Class>
-
-<owl:Class rdf:about="#birthDate">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Person"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
-</owl:Class>
-
-<owl:Class rdf:about="#careerStartDate">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Person"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
-</owl:Class>
-
-<owl:Class rdf:about="#nationality">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Person"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-</owl:Class>
-
-<owl:Class rdf:about="#nAwards">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Person"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-</owl:Class>
-
-<owl:Class rdf:about="#avgRatingOfDirectedFilms">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Director"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-</owl:Class>
-
-<owl:Class rdf:about="#nFilmsDirected">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Director"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-</owl:Class>
-
-<owl:Class rdf:about="#nFilmsActed">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Actor"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-</owl:Class>
-
-<owl:Class rdf:about="#awardName">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Award"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-</owl:Class>
-
-<owl:Class rdf:about="#awardYear">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  <rdfs:domain rdf:resource="#Award"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-</owl:Class>
-
 <owl:NamedIndividual rdf:about="#Film_369196_I_Spit_on_Your_Grave__Déjà_Vu">
   <rdf:type rdf:resource="#Film"/>
   <hasGenre rdf:resource="#Genre_53_Thriller"/>
   <hasGenre rdf:resource="#Genre_27_Horror"/>
   <hasDirector rdf:resource="#Director_93410_Meir_Zarchi"/>
-  <hasActor rdf:resource="#Actor_93410_Meir_Zarchi"/>
+  <hasActor rdf:resource="#Actor_45471_Camille_Keaton"/>
+  <hasActor rdf:resource="#Actor_138860_Jamie_Bernadette"/>
+  <hasActor rdf:resource="#Actor_142402_Maria_Olsen"/>
+  <hasActor rdf:resource="#Actor_1243166_Jim_Tavaré"/>
+  <hasActor rdf:resource="#Actor_2263386_Jonathan_Peacy"/>
   <producedByStudio rdf:resource="#Studio_68200_Deja_Vu"/>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.937</tmdbRating>
+  <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</budget>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</revenue>
+  <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">148</runtime>
+  <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-04-23</releaseDate>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Genre_53_Thriller">
@@ -179,10 +200,63 @@
 
 <owl:NamedIndividual rdf:about="#Director_93410_Meir_Zarchi">
   <rdf:type rdf:resource="#Director"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Meir Zarchi</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">93410</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1937-01-01</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Israel</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Actor_93410_Meir_Zarchi">
+<owl:NamedIndividual rdf:about="#Actor_45471_Camille_Keaton">
   <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Camille Keaton</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45471</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1947-07-20</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1970</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_138860_Jamie_Bernadette">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jamie Bernadette</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">138860</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1987-12-14</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2008</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_142402_Maria_Olsen">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maria Olsen</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">142402</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1966-07-22</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">South Africa</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2005</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_1243166_Jim_Tavaré">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jim Tavaré</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1243166</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1963-04-30</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1984</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_2263386_Jonathan_Peacy">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jonathan Peacy</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2263386</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_68200_Deja_Vu">
@@ -198,9 +272,18 @@
   <hasGenre rdf:resource="#Genre_10402_Music"/>
   <hasGenre rdf:resource="#Genre_10770_TV_Movie"/>
   <hasDirector rdf:resource="#Director_49949_Steve_Binder"/>
-  <hasActor rdf:resource="#Actor_49949_Steve_Binder"/>
+  <hasActor rdf:resource="#Actor_24343_Peter_Mayhew"/>
+  <hasActor rdf:resource="#Actor_2_Mark_Hamill"/>
+  <hasActor rdf:resource="#Actor_4_Carrie_Fisher"/>
+  <hasActor rdf:resource="#Actor_3_Harrison_Ford"/>
+  <hasActor rdf:resource="#Actor_6_Anthony_Daniels"/>
   <producedByStudio rdf:resource="#Studio_1556_20th_Century_Fox_Television"/>
   <producedByStudio rdf:resource="#Studio_3143_Smith_Hemion_Productions"/>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.4</tmdbRating>
+  <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1000000</budget>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</revenue>
+  <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">97</runtime>
+  <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1978-11-17</releaseDate>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Genre_12_Adventure">
@@ -230,10 +313,67 @@
 
 <owl:NamedIndividual rdf:about="#Director_49949_Steve_Binder">
   <rdf:type rdf:resource="#Director"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Steve Binder</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">49949</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1932-12-12</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Actor_49949_Steve_Binder">
+<owl:NamedIndividual rdf:about="#Actor_24343_Peter_Mayhew">
   <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Peter Mayhew</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">24343</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1944-05-19</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1977</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_2_Mark_Hamill">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mark Hamill</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1951-09-25</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1970</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_4_Carrie_Fisher">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Carrie Fisher</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1956-10-21</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1969</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_3_Harrison_Ford">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Harrison Ford</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1942-07-13</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1964</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_6_Anthony_Daniels">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Anthony Daniels</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1946-02-21</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1969</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_1556_20th_Century_Fox_Television">
@@ -246,13 +386,130 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Smith-Hemion Productions</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Film_14164_Dragonball_Evolution">
+  <rdf:type rdf:resource="#Film"/>
+  <hasGenre rdf:resource="#Genre_28_Action"/>
+  <hasGenre rdf:resource="#Genre_12_Adventure"/>
+  <hasGenre rdf:resource="#Genre_14_Fantasy"/>
+  <hasGenre rdf:resource="#Genre_878_Science_Fiction"/>
+  <hasGenre rdf:resource="#Genre_53_Thriller"/>
+  <hasDirector rdf:resource="#Director_57134_James_Wong"/>
+  <hasActor rdf:resource="#Actor_503_Justin_Chatwin"/>
+  <hasActor rdf:resource="#Actor_1619_Chow_Yun_Fat"/>
+  <hasActor rdf:resource="#Actor_78323_Joon_Park"/>
+  <hasActor rdf:resource="#Actor_78324_Jamie_Chung"/>
+  <hasActor rdf:resource="#Actor_4730_Emmy_Rossum"/>
+  <producedByStudio rdf:resource="#Studio_81135_World_Film_Magic"/>
+  <producedByStudio rdf:resource="#Studio_444_Dune_Entertainment"/>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.903</tmdbRating>
+  <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30000000</budget>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">58228460</revenue>
+  <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">85</runtime>
+  <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2009-03-12</releaseDate>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Genre_28_Action">
+  <rdf:type rdf:resource="#Genre"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Action</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Genre_14_Fantasy">
+  <rdf:type rdf:resource="#Genre"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fantasy</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Director_57134_James_Wong">
+  <rdf:type rdf:resource="#Director"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">James Wong</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">57134</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1959-04-20</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">British Hong Kong</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1985</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_503_Justin_Chatwin">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Justin Chatwin</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">503</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1982-10-31</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Canada</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2001</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_1619_Chow_Yun_Fat">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chow Yun-Fat</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1619</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1955-05-18</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">British Hong Kong</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1973</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_78323_Joon_Park">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joon Park</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">78323</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1969-07-20</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">South Korea</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1999</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_78324_Jamie_Chung">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jamie Chung</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">78324</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1983-04-10</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2004</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_4730_Emmy_Rossum">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Emmy Rossum</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4730</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1986-09-12</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1993</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Studio_81135_World_Film_Magic">
+  <rdf:type rdf:resource="#Studio"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">World Film Magic</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Studio_444_Dune_Entertainment">
+  <rdf:type rdf:resource="#Studio"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dune Entertainment</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#Film_1001414_Fear_Street__Prom_Queen">
   <rdf:type rdf:resource="#Film"/>
   <hasGenre rdf:resource="#Genre_27_Horror"/>
   <hasGenre rdf:resource="#Genre_9648_Mystery"/>
   <hasDirector rdf:resource="#Director_1517250_Matt_Palmer"/>
-  <hasActor rdf:resource="#Actor_1517250_Matt_Palmer"/>
+  <hasActor rdf:resource="#Actor_2182738_India_Fowler"/>
+  <hasActor rdf:resource="#Actor_2971462_Suzanna_Son"/>
+  <hasActor rdf:resource="#Actor_1529436_Fina_Strazza"/>
+  <hasActor rdf:resource="#Actor_77795_Katherine_Waterston"/>
+  <hasActor rdf:resource="#Actor_3127_Lili_Taylor"/>
   <producedByStudio rdf:resource="#Studio_7076_Chernin_Entertainment"/>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.4</tmdbRating>
+  <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</budget>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</revenue>
+  <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90</runtime>
+  <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-23</releaseDate>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Genre_9648_Mystery">
@@ -262,10 +519,59 @@
 
 <owl:NamedIndividual rdf:about="#Director_1517250_Matt_Palmer">
   <rdf:type rdf:resource="#Director"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Matt Palmer</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1517250</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Actor_1517250_Matt_Palmer">
+<owl:NamedIndividual rdf:about="#Actor_2182738_India_Fowler">
   <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">India Fowler</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2182738</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-01-01</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_2971462_Suzanna_Son">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Suzanna Son</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2971462</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1995-10-31</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_1529436_Fina_Strazza">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fina Strazza</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1529436</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_77795_Katherine_Waterston">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Katherine Waterston</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">77795</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1980-03-03</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2006</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_3127_Lili_Taylor">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lili Taylor</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3127</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1967-02-20</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1986</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_7076_Chernin_Entertainment">
@@ -278,22 +584,84 @@
   <hasGenre rdf:resource="#Genre_10751_Family"/>
   <hasGenre rdf:resource="#Genre_14_Fantasy"/>
   <hasDirector rdf:resource="#Director_87742_Marc_Webb"/>
-  <hasActor rdf:resource="#Actor_87742_Marc_Webb"/>
+  <hasActor rdf:resource="#Actor_2217977_Rachel_Zegler"/>
+  <hasActor rdf:resource="#Actor_90633_Gal_Gadot"/>
+  <hasActor rdf:resource="#Actor_1869968_Andrew_Burnap"/>
+  <hasActor rdf:resource="#Actor_3555_Jeremy_Swift"/>
+  <hasActor rdf:resource="#Actor_19978_Jason_Kravits"/>
   <producedByStudio rdf:resource="#Studio_2_Walt_Disney_Pictures"/>
   <producedByStudio rdf:resource="#Studio_2527_Marc_Platt_Productions"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Genre_14_Fantasy">
-  <rdf:type rdf:resource="#Genre"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fantasy</rdfs:label>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.296</tmdbRating>
+  <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">270000000</budget>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">205176583</revenue>
+  <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">109</runtime>
+  <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-03-12</releaseDate>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Director_87742_Marc_Webb">
   <rdf:type rdf:resource="#Director"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Marc Webb</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">87742</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1974-08-31</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1996</careerStartYear>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Actor_87742_Marc_Webb">
+<owl:NamedIndividual rdf:about="#Actor_2217977_Rachel_Zegler">
   <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rachel Zegler</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2217977</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2001-05-03</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2015</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_90633_Gal_Gadot">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gal Gadot</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90633</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1985-04-30</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Israel</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2004</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_1869968_Andrew_Burnap">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Andrew Burnap</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1869968</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1990-03-05</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2014</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_3555_Jeremy_Swift">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jeremy Swift</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3555</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1960-06-27</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1981</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_19978_Jason_Kravits">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jason Kravits</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">19978</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1967-05-28</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1982</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_2_Walt_Disney_Pictures">
@@ -306,6 +674,99 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Marc Platt Productions</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Film_934584_Rich_Flu">
+  <rdf:type rdf:resource="#Film"/>
+  <hasGenre rdf:resource="#Genre_53_Thriller"/>
+  <hasDirector rdf:resource="#Director_2374023_Galder_Gaztelu_Urrutia"/>
+  <hasActor rdf:resource="#Actor_17628_Mary_Elizabeth_Winstead"/>
+  <hasActor rdf:resource="#Actor_28847_Rafe_Spall"/>
+  <hasActor rdf:resource="#Actor_11478_Lorraine_Bracco"/>
+  <hasActor rdf:resource="#Actor_1598589_Dixie_Egerickx"/>
+  <hasActor rdf:resource="#Actor_439097_César_Domboy"/>
+  <producedByStudio rdf:resource="#Studio_11068_Nostromo_Pictures"/>
+  <producedByStudio rdf:resource="#Studio_240724_Rich_Flu"/>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.206</tmdbRating>
+  <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</budget>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</revenue>
+  <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">116</runtime>
+  <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-12-12</releaseDate>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Director_2374023_Galder_Gaztelu_Urrutia">
+  <rdf:type rdf:resource="#Director"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Galder Gaztelu-Urrutia</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2374023</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1974-03-18</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spain</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_17628_Mary_Elizabeth_Winstead">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mary Elizabeth Winstead</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">17628</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1984-11-28</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1997</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_28847_Rafe_Spall">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rafe Spall</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">28847</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1983-03-10</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2001</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_11478_Lorraine_Bracco">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lorraine Bracco</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11478</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1954-10-02</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1979</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_1598589_Dixie_Egerickx">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dixie Egerickx</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1598589</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2005-10-31</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2015</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_439097_César_Domboy">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">César Domboy</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">439097</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1990-03-10</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">France</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2004</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Studio_11068_Nostromo_Pictures">
+  <rdf:type rdf:resource="#Studio"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nostromo Pictures</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Studio_240724_Rich_Flu">
+  <rdf:type rdf:resource="#Studio"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rich Flu</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#Film_950387_A_Minecraft_Movie">
   <rdf:type rdf:resource="#Film"/>
   <hasGenre rdf:resource="#Genre_10751_Family"/>
@@ -313,9 +774,18 @@
   <hasGenre rdf:resource="#Genre_12_Adventure"/>
   <hasGenre rdf:resource="#Genre_14_Fantasy"/>
   <hasDirector rdf:resource="#Director_53925_Jared_Hess"/>
-  <hasActor rdf:resource="#Actor_53925_Jared_Hess"/>
+  <hasActor rdf:resource="#Actor_117642_Jason_Momoa"/>
+  <hasActor rdf:resource="#Actor_70851_Jack_Black"/>
+  <hasActor rdf:resource="#Actor_2680307_Sebastian_Eugene_Hansen"/>
+  <hasActor rdf:resource="#Actor_2604515_Emma_Myers"/>
+  <hasActor rdf:resource="#Actor_1075037_Danielle_Brooks"/>
   <producedByStudio rdf:resource="#Studio_174_Warner_Bros__Pictures"/>
   <producedByStudio rdf:resource="#Studio_923_Legendary_Pictures"/>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.497</tmdbRating>
+  <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">150000000</budget>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">940583805</revenue>
+  <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</runtime>
+  <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-03-31</releaseDate>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Genre_35_Comedy">
@@ -325,10 +795,65 @@
 
 <owl:NamedIndividual rdf:about="#Director_53925_Jared_Hess">
   <rdf:type rdf:resource="#Director"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jared Hess</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">53925</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1979-07-18</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Actor_53925_Jared_Hess">
+<owl:NamedIndividual rdf:about="#Actor_117642_Jason_Momoa">
   <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jason Momoa</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">117642</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1979-08-01</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1999</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_70851_Jack_Black">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jack Black</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">70851</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1969-08-28</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1982</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_2680307_Sebastian_Eugene_Hansen">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sebastian Eugene Hansen</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2680307</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-04-06</birthDate>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_2604515_Emma_Myers">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Emma Myers</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2604515</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2002-04-02</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2010</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_1075037_Danielle_Brooks">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Danielle Brooks</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1075037</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1989-09-17</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2011</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_174_Warner_Bros__Pictures">
@@ -347,14 +872,18 @@
   <hasGenre rdf:resource="#Genre_80_Crime"/>
   <hasGenre rdf:resource="#Genre_53_Thriller"/>
   <hasDirector rdf:resource="#Director_19769_David_Ayer"/>
-  <hasActor rdf:resource="#Actor_19769_David_Ayer"/>
+  <hasActor rdf:resource="#Actor_976_Jason_Statham"/>
+  <hasActor rdf:resource="#Actor_973_Jason_Flemyng"/>
+  <hasActor rdf:resource="#Actor_17817_Merab_Ninidze"/>
+  <hasActor rdf:resource="#Actor_1011106_Maximilian_Osinski"/>
+  <hasActor rdf:resource="#Actor_950125_Cokey_Falkow"/>
   <producedByStudio rdf:resource="#Studio_118475_Cedar_Park_Entertainment"/>
   <producedByStudio rdf:resource="#Studio_219295_BlockFilm"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Genre_28_Action">
-  <rdf:type rdf:resource="#Genre"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Action</rdfs:label>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.67</tmdbRating>
+  <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40000000</budget>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">98652557</revenue>
+  <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">116</runtime>
+  <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-03-26</releaseDate>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Genre_80_Crime">
@@ -364,10 +893,62 @@
 
 <owl:NamedIndividual rdf:about="#Director_19769_David_Ayer">
   <rdf:type rdf:resource="#Director"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">David Ayer</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">19769</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1968-01-18</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2000</careerStartYear>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Actor_19769_David_Ayer">
+<owl:NamedIndividual rdf:about="#Actor_976_Jason_Statham">
   <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jason Statham</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">976</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1967-07-26</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1998</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_973_Jason_Flemyng">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jason Flemyng</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">973</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1966-09-25</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1991</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_17817_Merab_Ninidze">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Merab Ninidze</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">17817</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1965-11-03</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Georgia</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_1011106_Maximilian_Osinski">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximilian Osinski</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1011106</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1984-04-01</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Austria</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_950125_Cokey_Falkow">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cokey Falkow</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">950125</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_118475_Cedar_Park_Entertainment">
@@ -380,23 +961,180 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BlockFilm</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Film_1232546_Until_Dawn">
+  <rdf:type rdf:resource="#Film"/>
+  <hasGenre rdf:resource="#Genre_27_Horror"/>
+  <hasGenre rdf:resource="#Genre_9648_Mystery"/>
+  <hasDirector rdf:resource="#Director_1302082_David_F__Sandberg"/>
+  <hasActor rdf:resource="#Actor_3307906_Ella_Rubin"/>
+  <hasActor rdf:resource="#Actor_2342988_Michael_Cimino"/>
+  <hasActor rdf:resource="#Actor_1972166_Odessa_A_zion"/>
+  <hasActor rdf:resource="#Actor_2983147_Ji_young_Yoo"/>
+  <hasActor rdf:resource="#Actor_2286570_Belmont_Cameli"/>
+  <producedByStudio rdf:resource="#Studio_125281_PlayStation_Productions"/>
+  <producedByStudio rdf:resource="#Studio_149696_Coin_Operated"/>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.512</tmdbRating>
+  <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15000000</budget>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50023607</revenue>
+  <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">103</runtime>
+  <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-04-23</releaseDate>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Director_1302082_David_F__Sandberg">
+  <rdf:type rdf:resource="#Director"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">David F. Sandberg</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1302082</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1981-01-21</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sweden</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2006</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_3307906_Ella_Rubin">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ella Rubin</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3307906</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2001-09-02</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_2342988_Michael_Cimino">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Michael Cimino</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2342988</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1999-11-10</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2015</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_1972166_Odessa_A_zion">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Odessa A'zion</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1972166</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-06-17</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2011</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_2983147_Ji_young_Yoo">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ji-young Yoo</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2983147</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1999-01-01</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2021</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_2286570_Belmont_Cameli">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Belmont Cameli</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2286570</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1998-03-01</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2018</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Studio_125281_PlayStation_Productions">
+  <rdf:type rdf:resource="#Studio"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PlayStation Productions</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Studio_149696_Coin_Operated">
+  <rdf:type rdf:resource="#Studio"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Coin Operated</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#Film_552524_Lilo___Stitch">
   <rdf:type rdf:resource="#Film"/>
   <hasGenre rdf:resource="#Genre_10751_Family"/>
   <hasGenre rdf:resource="#Genre_35_Comedy"/>
   <hasGenre rdf:resource="#Genre_878_Science_Fiction"/>
   <hasDirector rdf:resource="#Director_1540069_Dean_Fleischer_Camp"/>
-  <hasActor rdf:resource="#Actor_1540069_Dean_Fleischer_Camp"/>
+  <hasActor rdf:resource="#Actor_3988423_Maia_Kealoha"/>
+  <hasActor rdf:resource="#Actor_3025125_Sydney_Agudong"/>
+  <hasActor rdf:resource="#Actor_66193_Chris_Sanders"/>
+  <hasActor rdf:resource="#Actor_58225_Zach_Galifianakis"/>
+  <hasActor rdf:resource="#Actor_141034_Billy_Magnussen"/>
   <producedByStudio rdf:resource="#Studio_2_Walt_Disney_Pictures"/>
   <producedByStudio rdf:resource="#Studio_118854_Rideback"/>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.1</tmdbRating>
+  <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100000000</budget>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">469021482</revenue>
+  <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">108</runtime>
+  <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-17</releaseDate>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Director_1540069_Dean_Fleischer_Camp">
   <rdf:type rdf:resource="#Director"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dean Fleischer Camp</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1540069</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1982-01-01</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Actor_1540069_Dean_Fleischer_Camp">
+<owl:NamedIndividual rdf:about="#Actor_3988423_Maia_Kealoha">
   <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maia Kealoha</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3988423</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-12-14</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_3025125_Sydney_Agudong">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sydney Agudong</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3025125</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-11-13</birthDate>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_66193_Chris_Sanders">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chris Sanders</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">66193</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1962-03-12</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1984</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_58225_Zach_Galifianakis">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Zach Galifianakis</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">58225</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1969-10-01</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1996</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_141034_Billy_Magnussen">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Billy Magnussen</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">141034</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1985-04-20</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2007</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_118854_Rideback">
@@ -408,18 +1146,82 @@
   <rdf:type rdf:resource="#Film"/>
   <hasGenre rdf:resource="#Genre_27_Horror"/>
   <hasGenre rdf:resource="#Genre_9648_Mystery"/>
-  <hasDirector rdf:resource="#Director_1181022_Zach_Lipovsky"/>
-  <hasActor rdf:resource="#Actor_1181022_Zach_Lipovsky"/>
+  <hasDirector rdf:resource="#Director_1938317_Adam_B__Stein"/>
+  <hasActor rdf:resource="#Actor_3480304_Kaitlyn_Santa_Juana"/>
+  <hasActor rdf:resource="#Actor_1547148_Teo_Briones"/>
+  <hasActor rdf:resource="#Actor_58724_Rya_Kihlstedt"/>
+  <hasActor rdf:resource="#Actor_144852_Richard_Harmon"/>
+  <hasActor rdf:resource="#Actor_1482198_Owen_Patrick_Joyner"/>
   <producedByStudio rdf:resource="#Studio_12_New_Line_Cinema"/>
   <producedByStudio rdf:resource="#Studio_48788_Practical_Pictures"/>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.009</tmdbRating>
+  <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50000000</budget>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">213514062</revenue>
+  <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">110</runtime>
+  <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-14</releaseDate>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Director_1181022_Zach_Lipovsky">
+<owl:NamedIndividual rdf:about="#Director_1938317_Adam_B__Stein">
   <rdf:type rdf:resource="#Director"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Adam B. Stein</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1938317</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2003</careerStartYear>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Actor_1181022_Zach_Lipovsky">
+<owl:NamedIndividual rdf:about="#Actor_3480304_Kaitlyn_Santa_Juana">
   <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kaitlyn Santa Juana</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3480304</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1996-04-19</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Canada</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_1547148_Teo_Briones">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Teo Briones</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1547148</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2005-01-11</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_58724_Rya_Kihlstedt">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rya Kihlstedt</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">58724</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1970-07-23</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1993</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_144852_Richard_Harmon">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Richard Harmon</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">144852</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1991-08-18</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Canada</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2003</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_1482198_Owen_Patrick_Joyner">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Owen Patrick Joyner</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1482198</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-07-19</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2014</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_12_New_Line_Cinema">
@@ -432,14 +1234,119 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Practical Pictures</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Film_575265_Mission__Impossible___The_Final_Reckoning">
+  <rdf:type rdf:resource="#Film"/>
+  <hasGenre rdf:resource="#Genre_28_Action"/>
+  <hasGenre rdf:resource="#Genre_12_Adventure"/>
+  <hasGenre rdf:resource="#Genre_53_Thriller"/>
+  <hasDirector rdf:resource="#Director_9033_Christopher_McQuarrie"/>
+  <hasActor rdf:resource="#Actor_500_Tom_Cruise"/>
+  <hasActor rdf:resource="#Actor_39459_Hayley_Atwell"/>
+  <hasActor rdf:resource="#Actor_10182_Ving_Rhames"/>
+  <hasActor rdf:resource="#Actor_11108_Simon_Pegg"/>
+  <hasActor rdf:resource="#Actor_65344_Esai_Morales"/>
+  <producedByStudio rdf:resource="#Studio_4_Paramount_Pictures"/>
+  <producedByStudio rdf:resource="#Studio_82819_Skydance_Media"/>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.1</tmdbRating>
+  <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">400000000</budget>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">239047050</revenue>
+  <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">170</runtime>
+  <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-17</releaseDate>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Director_9033_Christopher_McQuarrie">
+  <rdf:type rdf:resource="#Director"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christopher McQuarrie</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9033</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1968-06-12</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1993</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_500_Tom_Cruise">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tom Cruise</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">500</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1962-07-03</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1981</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_39459_Hayley_Atwell">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hayley Atwell</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">39459</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1982-04-05</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2005</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_10182_Ving_Rhames">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ving Rhames</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10182</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1959-05-12</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1984</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_11108_Simon_Pegg">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Simon Pegg</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11108</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1970-02-14</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1995</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_65344_Esai_Morales">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Esai Morales</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">65344</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1962-10-01</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1982</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Studio_4_Paramount_Pictures">
+  <rdf:type rdf:resource="#Studio"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paramount Pictures</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Studio_82819_Skydance_Media">
+  <rdf:type rdf:resource="#Studio"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Skydance Media</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#Film_238_The_Godfather">
   <rdf:type rdf:resource="#Film"/>
   <hasGenre rdf:resource="#Genre_18_Drama"/>
   <hasGenre rdf:resource="#Genre_80_Crime"/>
   <hasDirector rdf:resource="#Director_1776_Francis_Ford_Coppola"/>
-  <hasActor rdf:resource="#Actor_1776_Francis_Ford_Coppola"/>
+  <hasActor rdf:resource="#Actor_3084_Marlon_Brando"/>
+  <hasActor rdf:resource="#Actor_1158_Al_Pacino"/>
+  <hasActor rdf:resource="#Actor_3085_James_Caan"/>
+  <hasActor rdf:resource="#Actor_3087_Robert_Duvall"/>
+  <hasActor rdf:resource="#Actor_3086_Richard_S__Castellano"/>
   <producedByStudio rdf:resource="#Studio_4_Paramount_Pictures"/>
   <producedByStudio rdf:resource="#Studio_10211_Alfran_Productions"/>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.686</tmdbRating>
+  <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6000000</budget>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">245066411</revenue>
+  <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">175</runtime>
+  <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1972-03-14</releaseDate>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Genre_18_Drama">
@@ -449,15 +1356,67 @@
 
 <owl:NamedIndividual rdf:about="#Director_1776_Francis_Ford_Coppola">
   <rdf:type rdf:resource="#Director"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Francis Ford Coppola</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1776</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1939-04-07</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1962</careerStartYear>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Actor_1776_Francis_Ford_Coppola">
+<owl:NamedIndividual rdf:about="#Actor_3084_Marlon_Brando">
   <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Marlon Brando</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3084</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1924-04-03</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1944</careerStartYear>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Studio_4_Paramount_Pictures">
-  <rdf:type rdf:resource="#Studio"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paramount Pictures</rdfs:label>
+<owl:NamedIndividual rdf:about="#Actor_1158_Al_Pacino">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Al Pacino</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1158</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1940-04-25</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1967</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_3085_James_Caan">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">James Caan</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3085</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1940-03-26</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1961</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_3087_Robert_Duvall">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Robert Duvall</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3087</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1931-01-05</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1952</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_3086_Richard_S__Castellano">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Richard S. Castellano</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3086</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1933-09-04</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_10211_Alfran_Productions">
@@ -470,21 +1429,175 @@
   <hasGenre rdf:resource="#Genre_18_Drama"/>
   <hasGenre rdf:resource="#Genre_80_Crime"/>
   <hasDirector rdf:resource="#Director_4027_Frank_Darabont"/>
-  <hasActor rdf:resource="#Actor_4027_Frank_Darabont"/>
+  <hasActor rdf:resource="#Actor_504_Tim_Robbins"/>
+  <hasActor rdf:resource="#Actor_192_Morgan_Freeman"/>
+  <hasActor rdf:resource="#Actor_4029_Bob_Gunton"/>
+  <hasActor rdf:resource="#Actor_6573_William_Sadler"/>
+  <hasActor rdf:resource="#Actor_6574_Clancy_Brown"/>
   <producedByStudio rdf:resource="#Studio_97_Castle_Rock_Entertainment"/>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.7</tmdbRating>
+  <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25000000</budget>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">28341469</revenue>
+  <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">142</runtime>
+  <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1994-09-23</releaseDate>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Director_4027_Frank_Darabont">
   <rdf:type rdf:resource="#Director"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Frank Darabont</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4027</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1959-01-28</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1981</careerStartYear>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Actor_4027_Frank_Darabont">
+<owl:NamedIndividual rdf:about="#Actor_504_Tim_Robbins">
   <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tim Robbins</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">504</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1958-10-16</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1982</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_192_Morgan_Freeman">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Morgan Freeman</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">192</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1937-06-01</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1964</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_4029_Bob_Gunton">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bob Gunton</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4029</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1945-11-15</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1981</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_6573_William_Sadler">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">William Sadler</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6573</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1950-04-13</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1977</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_6574_Clancy_Brown">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clancy Brown</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6574</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1959-01-05</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1983</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_97_Castle_Rock_Entertainment">
   <rdf:type rdf:resource="#Studio"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Castle Rock Entertainment</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Film_155_The_Dark_Knight">
+  <rdf:type rdf:resource="#Film"/>
+  <hasGenre rdf:resource="#Genre_18_Drama"/>
+  <hasGenre rdf:resource="#Genre_28_Action"/>
+  <hasGenre rdf:resource="#Genre_80_Crime"/>
+  <hasGenre rdf:resource="#Genre_53_Thriller"/>
+  <hasDirector rdf:resource="#Director_525_Christopher_Nolan"/>
+  <hasActor rdf:resource="#Actor_3894_Christian_Bale"/>
+  <hasActor rdf:resource="#Actor_1810_Heath_Ledger"/>
+  <hasActor rdf:resource="#Actor_6383_Aaron_Eckhart"/>
+  <hasActor rdf:resource="#Actor_3895_Michael_Caine"/>
+  <hasActor rdf:resource="#Actor_1579_Maggie_Gyllenhaal"/>
+  <producedByStudio rdf:resource="#Studio_174_Warner_Bros__Pictures"/>
+  <producedByStudio rdf:resource="#Studio_923_Legendary_Pictures"/>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.52</tmdbRating>
+  <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">185000000</budget>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1004558444</revenue>
+  <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">152</runtime>
+  <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-07-16</releaseDate>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Director_525_Christopher_Nolan">
+  <rdf:type rdf:resource="#Director"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christopher Nolan</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">525</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1970-07-30</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1988</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_3894_Christian_Bale">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christian Bale</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3894</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1974-01-30</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1983</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_1810_Heath_Ledger">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Heath Ledger</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1810</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1979-04-04</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Australia</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1992</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_6383_Aaron_Eckhart">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aaron Eckhart</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6383</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1968-03-12</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1992</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_3895_Michael_Caine">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Michael Caine</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3895</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1933-03-14</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1956</careerStartYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Actor_1579_Maggie_Gyllenhaal">
+  <rdf:type rdf:resource="#Actor"/>
+  <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maggie Gyllenhaal</personName>
+  <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1579</personTmdbID>
+  <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1977-11-16</birthDate>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1992</careerStartYear>
 </owl:NamedIndividual>
 
 
