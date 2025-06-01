@@ -86,6 +86,18 @@ with onto: # per evitare di scrivere (namespace = onto) in ogni classe, si scriv
     class castSize(DataProperty, FunctionalProperty):
         domain = [Film]
         range = [int]
+    class isAuteurProject(DataProperty, FunctionalProperty):
+        domain = [Film]
+        range = [bool]
+        comment = ["Indica se si tratta di un film d'autore, definito come avere valutazione media del regista > 7, regista con meno di 8 film, e budget < 20 milioni"]
+    class isPrestigeProject(DataProperty, FunctionalProperty):
+        domain = [Film]
+        range = [bool]
+        comment = ["Il film è di prestigio se il regista o un attore ha vinto un premio, è stato rilasciato nella stagione dei premi (da ottobre a dicembre) e ha un budget > 15 milioni"]
+    class hasProvenCollaboration(DataProperty, FunctionalProperty):
+        domain = [Film]
+        range = [bool]
+        comment = ["Un film ha una collaborazione comprovata se il regista e un attore hanno lavorato insieme ad altri film precedentemente e la valutazione media di tali film è > 7.5"]
 
     class personName(DataProperty, FunctionalProperty):
         domain = [Person]
@@ -108,6 +120,10 @@ with onto: # per evitare di scrivere (namespace = onto) in ogni classe, si scriv
     class nAwards(DataProperty, FunctionalProperty):
         domain = [Person]
         range = [int]
+    class personInCareerPeak(DataProperty, FunctionalProperty):
+        domain = [Person]
+        range = [bool]
+        comment = ["Una persona è all'apice della propria carriera se è tra il decimo e il ventesimo anno di carriera e la valutazione media dei suoi film è > 7.5"]
     
     class avgRatingOfDirectedFilms(DataProperty, FunctionalProperty):
         domain = [Director]

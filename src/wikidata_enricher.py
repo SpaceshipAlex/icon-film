@@ -51,77 +51,76 @@ print(f"Inizio arricchimento per {len(personsToProcess)} persone da Wikidata")
 nProcessed = 0
 nEnriched = 0
 
-with onto:
-    for person in personsToProcess:
-        personName = person.personName if person.personName else "N/D"
-        personTmdbID = person.personTmdbID if person.personTmdbID else "0"
-        personWikidataID = getWikidataID(personTmdbID)
+for person in personsToProcess:
+    personName = person.personName if person.personName else "N/D"
+    personTmdbID = person.personTmdbID if person.personTmdbID else "0"
+    personWikidataID = getWikidataID(personTmdbID)
 
-        if not personWikidataID:
-            continue
+    if not personWikidataID:
+        continue
 
-        personDetailsQuery = f"""
-            SELECT ?birthDate ?nationalityLabel ?personLabel ?awardCount ?careerStart WHERE {{
-                BIND(wd:{personWikidataID} AS ?person) # variabile riferimento veloce alla persona
+    personDetailsQuery = f"""
+        SELECT ?birthDate ?nationalityLabel ?personLabel ?awardCount ?careerStart WHERE {{
+            BIND(wd:{personWikidataID} AS ?person) # variabile riferimento veloce alla persona
 
-                OPTIONAL {{ ?person wdt:P569 ?birthDate. }} # date of birth
+            OPTIONAL {{ ?person wdt:P569 ?birthDate. }} # date of birth
 
-                OPTIONAL {{
-                    ?person wdt:P27 ?nationalityUri. # country of citizenship
-                    ?nationalityUri rdfs:label ?nationalityLabel.
-                    FILTER(LANG(?nationalityLabel) = "en") # ottengo il nome inglese della nazione
-                }}
+            OPTIONAL {{
+                ?person wdt:P27 ?nationalityUri. # country of citizenship
+                ?nationalityUri rdfs:label ?nationalityLabel.
+                FILTER(LANG(?nationalityLabel) = "en") # ottengo il nome inglese della nazione
+            }}
 
-                OPTIONAL {{
-                    SELECT(COUNT(*) AS ?awardCount_int) WHERE {{ # sotto-query per contare i premi ricevuti
-                        BIND(wd:{personWikidataID} AS ?personSub) # variabile riferimento veloce alla persona nella sotto-query
-                        ?personSub p:P166 ?statement. # ottengo lo statement perché devo considerare anche premi uguali vinti più volte in date diverse
-                        ?statement ps:P166 ?awardInstance. # award received
-                        OPTIONAL {{ ?statement pq:P585 ?date. }} # considero premi vinti più volte ottenendo anche le date
-                        VALUES ?majorAwardType {{ wd:Q19020 wd:Q1011547 wd:Q102427 wd:Q28444913 }} # la variabile può indicare Oscar, Golden Globe, BAFTA o Festival di Cannes
-                        ?awardInstance (wdt:P31/wdt:P279*) ?majorAwardType. # cerco premi che siano instance of (P31) o subclass of (P279) uno dei quattro definiti sopra
-                    }} 
-                }} BIND(COALESCE(?awardCount_int, 0) AS ?awardCount) # assegna awardCount_int ad awardCount o 0 se è null
+            OPTIONAL {{
+                SELECT(COUNT(*) AS ?awardCount_int) WHERE {{ # sotto-query per contare i premi ricevuti
+                    BIND(wd:{personWikidataID} AS ?personSub) # variabile riferimento veloce alla persona nella sotto-query
+                    ?personSub p:P166 ?statement. # ottengo lo statement perché devo considerare anche premi uguali vinti più volte in date diverse
+                    ?statement ps:P166 ?awardInstance. # award received
+                    OPTIONAL {{ ?statement pq:P585 ?date. }} # considero premi vinti più volte ottenendo anche le date
+                    VALUES ?majorAwardType {{ wd:Q19020 wd:Q1011547 wd:Q102427 wd:Q28444913 }} # la variabile può indicare Oscar, Golden Globe, BAFTA o Festival di Cannes
+                    ?awardInstance (wdt:P31/wdt:P279*) ?majorAwardType. # cerco premi che siano instance of (P31) o subclass of (P279) uno dei quattro definiti sopra
+                }} 
+            }} BIND(COALESCE(?awardCount_int, 0) AS ?awardCount) # assegna awardCount_int ad awardCount o 0 se è null
 
-                OPTIONAL {{ ?person wdt:P2031 ?careerStart }}
+            OPTIONAL {{ ?person wdt:P2031 ?careerStart }}
 
-                SERVICE wikibase:label {{
-                    bd:serviceParam wikibase:language "en".
-                    ?person rdfs:label ?personLabel. # ottengo la label della persona in inglese
-                }}
-            }} LIMIT 1
-            """
-        wikidataResults = executeWikidataQuery(personDetailsQuery)
-        nProcessed += 1
+            SERVICE wikibase:label {{
+                bd:serviceParam wikibase:language "en".
+                ?person rdfs:label ?personLabel. # ottengo la label della persona in inglese
+            }}
+        }} LIMIT 1
+        """
+    wikidataResults = executeWikidataQuery(personDetailsQuery)
+    nProcessed += 1
 
-        if not wikidataResults:
-            print(f"Nessun dettaglio trovato su Wikidata per {personName}")
-            continue
+    if not wikidataResults:
+        print(f"Nessun dettaglio trovato su Wikidata per {personName}")
+        continue
 
-        result = wikidataResults[0]
+    result = wikidataResults[0]
 
-        wikidataBirthDate = result.get('birthDate', {}).get('value')
-        if wikidataBirthDate:
-            try:
-                parsedBirthDate = datetime.datetime.strptime(wikidataBirthDate.split('T')[0], '%Y-%m-%d').date() # separo la stringa YYYY-MM-DDTHH:MM:SS usando T come separatore, per poi trasformarla in data
-                person.birthDate = parsedBirthDate
-            except ValueError:
-                print(f"Formato data di nascita non riconosciuto da Wikidata: {wikidataBirthDate}")
-        
-        wikidataNationality = result.get('nationalityLabel', {}).get('value')
-        if wikidataNationality:
-            person.nationality = wikidataNationality
-        
-        wikidataAwardCount = int(result.get('awardCount', {}).get('value', 0))
-        if wikidataAwardCount >= 0:
-            person.nAwards = wikidataAwardCount
+    wikidataBirthDate = result.get('birthDate', {}).get('value')
+    if wikidataBirthDate:
+        try:
+            parsedBirthDate = datetime.datetime.strptime(wikidataBirthDate.split('T')[0], '%Y-%m-%d').date() # separo la stringa YYYY-MM-DDTHH:MM:SS usando T come separatore, per poi trasformarla in data
+            person.birthDate = parsedBirthDate
+        except ValueError:
+            print(f"Formato data di nascita non riconosciuto da Wikidata: {wikidataBirthDate}")
+    
+    wikidataNationality = result.get('nationalityLabel', {}).get('value')
+    if wikidataNationality:
+        person.nationality = wikidataNationality
+    
+    wikidataAwardCount = int(result.get('awardCount', {}).get('value', 0))
+    if wikidataAwardCount >= 0:
+        person.nAwards = wikidataAwardCount
 
-        wikidataCareerStart = result.get('careerStart', {}).get('value')
-        if wikidataCareerStart:
-            person.careerStartYear = int(wikidataCareerStart.split('T')[0].split('-')[0]) # ottengo l'anno dalla data inizio della carriera
-        
-        nEnriched += 1
-        print(f"Arricchito {personName}, totale {nEnriched} persone su {nProcessed}")
+    wikidataCareerStart = result.get('careerStart', {}).get('value')
+    if wikidataCareerStart:
+        person.careerStartYear = int(wikidataCareerStart.split('T')[0].split('-')[0]) # ottengo l'anno dalla data inizio della carriera
+    
+    nEnriched += 1
+    print(f"Arricchito {personName}, totale {nEnriched} persone su {nProcessed}")
 
 onto.save(file = ONTO_PATH, format = "rdfxml")
 print(f"\nKnowledge Base arricchita da Wikidata salvata")

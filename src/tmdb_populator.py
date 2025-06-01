@@ -5,7 +5,7 @@ import utils
 ONTO_FILENAME = "movie_rating_ontology.owl"
 ONTO_PATH = os.path.join("ontology", ONTO_FILENAME)
 RATING_BANDS = [(0, 3.4), (3.5, 5.4), (5.5, 6.9), (7.0, 8.4), (8.5, 10.0)] # fasce di voti secondo le quali effettuare il popolamento
-MOVIES_PER_BAND = 3 # numero di film da prelevare per ognuna delle fasce
+MOVIES_PER_BAND = 2 # numero di film da prelevare per ognuna delle fasce
 
 onto = get_ontology(ONTO_PATH).load()
 
@@ -25,96 +25,95 @@ def sanitizeName(name):
 def fetchAndAddMovie(movieID):
     movieDetails = utils.getTMDBData(f"movie/{movieID}", params = {'append_to_response': 'credits,keywords'})
     if movieDetails:
-        with onto:
-            filmTitleSanitized = sanitizeName(movieDetails.get('title'))
-            filmIRI = f"Film_{movieDetails.get('id')}_{filmTitleSanitized}"
+        filmTitleSanitized = sanitizeName(movieDetails.get('title'))
+        filmIRI = f"Film_{movieDetails.get('id')}_{filmTitleSanitized}"
 
-            # Creo un nuovo film nella KB se non esiste già
-            currentFilm = onto.search_one(iri = f"*{filmIRI}")
-            if not currentFilm:
-                currentFilm = onto.Film(filmIRI)
-            currentFilm.filmTitle = movieDetails.get('title')
-            currentFilm.tmdbRating = float(movieDetails.get('vote_average', 0.0))
-            currentFilm.budget = int(movieDetails.get('budget', 0))
-            currentFilm.revenue = int(movieDetails.get('revenue', 0))
-            currentFilm.runtime = int(movieDetails.get('runtime', 0))
-            if movieDetails.get('release_date'):
-                try:
-                    currentFilm.releaseDate = datetime.datetime.strptime(movieDetails.get('release_date'), '%Y-%m-%d').date()
-                except ValueError:
-                    print(f"Formato della data di uscita non valido per {movieDetails.get('title')}")
+        # Creo un nuovo film nella KB se non esiste già
+        currentFilm = onto.search_one(iri = f"*{filmIRI}")
+        if not currentFilm:
+            currentFilm = onto.Film(filmIRI)
+        currentFilm.filmTitle = movieDetails.get('title')
+        currentFilm.tmdbRating = float(movieDetails.get('vote_average', 0.0))
+        currentFilm.budget = int(movieDetails.get('budget', 0))
+        currentFilm.revenue = int(movieDetails.get('revenue', 0))
+        currentFilm.runtime = int(movieDetails.get('runtime', 0))
+        if movieDetails.get('release_date'):
+            try:
+                currentFilm.releaseDate = datetime.datetime.strptime(movieDetails.get('release_date'), '%Y-%m-%d').date()
+            except ValueError:
+                print(f"Formato della data di uscita non valido per {movieDetails.get('title')}")
+        
+        # Ciclo tra tutti i generi del film
+        for genreData in movieDetails.get('genres', []):
+            genreName = genreData.get('name')
+            genreID = genreData.get('id')
+            genreKey = (str(genreID), "Genre")
+
+            # Se il genere non esiste nel dizionario e nella KB, lo creo e lo aggiungo 
+            if genreKey not in createdGenres:
+                genreIRI = f"Genre_{genreID}_{sanitizeName(genreName)}"
+                currentGenre = onto.search_one(iri = f"*{genreIRI}")
+                if not currentGenre:
+                    currentGenre = onto.Genre(genreIRI)
+                    currentGenre.label.append(genreName)
+                createdGenres[genreKey] = currentGenre
             
-            # Ciclo tra tutti i generi del film
-            for genreData in movieDetails.get('genres', []):
-                genreName = genreData.get('name')
-                genreID = genreData.get('id')
-                genreKey = (str(genreID), "Genre")
+            currentFilm.hasGenre.append(createdGenres[genreKey])
 
-                # Se il genere non esiste nel dizionario e nella KB, lo creo e lo aggiungo 
-                if genreKey not in createdGenres:
-                    genreIRI = f"Genre_{genreID}_{sanitizeName(genreName)}"
-                    currentGenre = onto.search_one(iri = f"*{genreIRI}")
-                    if not currentGenre:
-                        currentGenre = onto.Genre(genreIRI)
-                        currentGenre.label.append(genreName)
-                    createdGenres[genreKey] = currentGenre
-                
-                currentFilm.hasGenre.append(createdGenres[genreKey])
+        # Ottengo il primo tra i registi listati e lo aggiungo al dizionario e alla KB, se non esiste
+        directorData = next((d for d in movieDetails.get('credits', {}).get('crew', []) if d.get('job') == 'Director'), None)
+        if directorData:
+            directorName = directorData.get('name')
+            directorID = directorData.get('id')
+            directorGender = directorData.get('gender')
+            personKey = (str(directorID), "Director")
 
-            # Ottengo il primo tra i registi listati e lo aggiungo al dizionario e alla KB, se non esiste
-            directorData = next((d for d in movieDetails.get('credits', {}).get('crew', []) if d.get('job') == 'Director'), None)
-            if directorData:
-                directorName = directorData.get('name')
-                directorID = directorData.get('id')
-                directorGender = directorData.get('gender')
-                personKey = (str(directorID), "Director")
+            if personKey not in createdPersons:
+                directorIRI = f"Director_{directorID}_{sanitizeName(directorName)}"
+                currentDirector = onto.search_one(iri = f"*{directorIRI}")
+                if not currentDirector:
+                    currentDirector = onto.Director(directorIRI)
+                    currentDirector.personName = directorName
+                    currentDirector.personTmdbID = directorID
+                    currentDirector.personGender = directorGender
+                createdPersons[personKey] = currentDirector
 
-                if personKey not in createdPersons:
-                    directorIRI = f"Director_{directorID}_{sanitizeName(directorName)}"
-                    currentDirector = onto.search_one(iri = f"*{directorIRI}")
-                    if not currentDirector:
-                        currentDirector = onto.Director(directorIRI)
-                        currentDirector.personName = directorName
-                        currentDirector.personTmdbID = directorID
-                        currentDirector.personGender = directorGender
-                    createdPersons[personKey] = currentDirector
+            currentFilm.hasDirector.append(createdPersons[personKey])
 
-                currentFilm.hasDirector.append(createdPersons[personKey])
+        # Ottengo i primi 5 attori listati e li aggiungo al dizionario e alla KB, se non esistono
+        for actorData in movieDetails.get('credits', {}).get('cast', [])[:5]:
+            actorName = actorData.get('name')
+            actorID = actorData.get('id')
+            actorGender = actorData.get('gender')
+            personKey = (str(actorID), "Actor")
 
-            # Ottengo i primi 5 attori listati e li aggiungo al dizionario e alla KB, se non esistono
-            for actorData in movieDetails.get('credits', {}).get('cast', [])[:5]:
-                actorName = actorData.get('name')
-                actorID = actorData.get('id')
-                actorGender = actorData.get('gender')
-                personKey = (str(actorID), "Actor")
+            if personKey not in createdPersons:
+                actorIRI = f"Actor_{actorID}_{sanitizeName(actorName)}"
+                currentActor = onto.search_one(iri = f"*{actorIRI}")
+                if not currentActor:
+                    currentActor = onto.Actor(actorIRI)
+                    currentActor.personName = actorName
+                    currentActor.personTmdbID = actorID
+                    currentActor.personGender = actorGender
+                createdPersons[personKey] = currentActor
 
-                if personKey not in createdPersons:
-                    actorIRI = f"Actor_{actorID}_{sanitizeName(actorName)}"
-                    currentActor = onto.search_one(iri = f"*{actorIRI}")
-                    if not currentActor:
-                        currentActor = onto.Actor(actorIRI)
-                        currentActor.personName = actorName
-                        currentActor.personTmdbID = actorID
-                        currentActor.personGender = actorGender
-                    createdPersons[personKey] = currentActor
+            currentFilm.hasActor.append(createdPersons[personKey])
 
-                currentFilm.hasActor.append(createdPersons[personKey])
+        # Ottengo i primi 2 studi di produzione listati e li aggiungo al dizionario e alla KB, se non esistono
+        for companyData in movieDetails.get('production_companies', [])[:2]:
+            studioName = companyData.get('name')
+            studioID = companyData.get('id')
+            studioKey = (str(studioID), "Studio")
 
-            # Ottengo i primi 2 studi di produzione listati e li aggiungo al dizionario e alla KB, se non esistono
-            for companyData in movieDetails.get('production_companies', [])[:2]:
-                studioName = companyData.get('name')
-                studioID = companyData.get('id')
-                studioKey = (str(studioID), "Studio")
-
-                if studioKey not in createdStudios:
-                    studioIRI = f"Studio_{studioID}_{sanitizeName(studioName)}"
-                    currentStudio = onto.search_one(iri = f"*{studioIRI}")
-                    if not currentStudio:
-                        currentStudio = onto.Studio(studioIRI)
-                        currentStudio.label.append(studioName)
-                    createdStudios[studioKey] = currentStudio
-                
-                currentFilm.producedByStudio.append(createdStudios[studioKey])   
+            if studioKey not in createdStudios:
+                studioIRI = f"Studio_{studioID}_{sanitizeName(studioName)}"
+                currentStudio = onto.search_one(iri = f"*{studioIRI}")
+                if not currentStudio:
+                    currentStudio = onto.Studio(studioIRI)
+                    currentStudio.label.append(studioName)
+                createdStudios[studioKey] = currentStudio
+            
+            currentFilm.producedByStudio.append(createdStudios[studioKey])   
     
 ### --- ###
 
