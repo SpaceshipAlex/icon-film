@@ -13,9 +13,10 @@ def calcPersonFeatures():
     print("Inizio calcolo features per Persone")
     with onto:
         for person in onto.Person.instances():
+            print(f"Processando persona {person.personName}")
             if isinstance(person, onto.Director):
                 filmsDirectedRating = []
-                for film in list(person.is_hasDirector_of): # relazione inversa di hasDirector, ottiene film di cui è regista
+                for film in list(person.hasDirected): # relazione inversa di hasDirector, ottiene film di cui è regista
                     if film.tmdbRating:
                         filmsDirectedRating.append(film.tmdbRating)
                 
@@ -28,7 +29,7 @@ def calcPersonFeatures():
 
             if isinstance(person, onto.Actor):
                 filmsActedRating = []
-                for film in list(person.is_hasActor_of):
+                for film in list(person.hasActed):
                     if film.tmdbRating:
                         filmsActedRating.append(film.tmdbRating)
                 
@@ -42,9 +43,9 @@ def calcPersonFeatures():
             if not person.careerStartYear: # se non è impostato, calcolo l'anno di inizio carriera sulla base dei film nella KB
                 personFilms = [] # una persona può essere sia attore che regista, in tal caso aggiungo entrambe le liste 
                 if isinstance(person, onto.Director):
-                    personFilms.extend(list(person.is_hasDirector_of))
+                    personFilms.extend(list(person.hasDirected))
                 if isinstance(person, onto.Actor):
-                    personFilms.extend(list(person.is_hasActor_of))
+                    personFilms.extend(list(person.hasActed))
 
                 minYear = float('inf')
                 for film in set(personFilms): # trasformo la lista di tutti i film in un insieme e la scorro per trovare il primo
@@ -59,7 +60,12 @@ def calcPersonFeatures():
 
 ### Calcola le feature derivate per i film
 def calcFilmFeatures():
-    
+    print("Inizio calcolo feature per Film")
+    with onto:
+        for film in onto.Film.instances():
+            print(f"Processando film {film.filmTitle}")
+        
+calcPersonFeatures()
                 
 
             

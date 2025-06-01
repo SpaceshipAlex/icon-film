@@ -29,9 +29,17 @@ with onto: # per evitare di scrivere (namespace = onto) in ogni classe, si scriv
         domain = [Film]
         range = [Director]
         functional = True # considero un solo regista per film, per semplicità
+    class hasDirected(ObjectProperty):
+        domain = [Director]
+        range = [Film]
+        inverse_property = hasDirector
     class hasActor(ObjectProperty):
         domain = [Film]
         range = [Actor]
+    class hasActed(ObjectProperty):
+        domain = [Actor]
+        range = [Film]
+        inverse_property = hasActor
     class producedByStudio(ObjectProperty):
         domain = [Film]
         range = [Studio]

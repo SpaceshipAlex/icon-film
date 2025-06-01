@@ -11,11 +11,25 @@
 <owl:ObjectProperty rdf:about="#hasDirector">
   <rdfs:domain rdf:resource="#Film"/>
   <rdfs:range rdf:resource="#Director"/>
+  <owl:inverseOf rdf:resource="#hasDirected"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasDirected">
+  <rdfs:domain rdf:resource="#Director"/>
+  <rdfs:range rdf:resource="#Film"/>
+  <owl:inverseOf rdf:resource="#hasDirector"/>
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#hasActor">
   <rdfs:domain rdf:resource="#Film"/>
   <rdfs:range rdf:resource="#Actor"/>
+  <owl:inverseOf rdf:resource="#hasActed"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasActed">
+  <rdfs:domain rdf:resource="#Actor"/>
+  <rdfs:range rdf:resource="#Film"/>
+  <owl:inverseOf rdf:resource="#hasActor"/>
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#producedByStudio">
@@ -70,6 +84,42 @@
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
 </owl:DatatypeProperty>
 
+<owl:DatatypeProperty rdf:about="#directorExperienceAtRelease">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Film"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#directorAvgRatingBeforeFilm">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Film"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#directorFilmCountBeforeFilm">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Film"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#actorsAvgExperienceAtRelease">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Film"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#actorsAvgRatingInPrevious2Years">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Film"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#castSize">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Film"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
 <owl:DatatypeProperty rdf:about="#personName">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   <rdfs:domain rdf:resource="#Person"/>
@@ -115,6 +165,12 @@
 <owl:DatatypeProperty rdf:about="#avgRatingOfDirectedFilms">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   <rdfs:domain rdf:resource="#Director"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#avgRatingOfActedFilms">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Actor"/>
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
 </owl:DatatypeProperty>
 
@@ -930,7 +986,7 @@
   <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">17817</personTmdbID>
   <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1965-11-03</birthDate>
-  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Georgia</nationality>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Soviet Union</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
 </owl:NamedIndividual>
 
@@ -973,9 +1029,9 @@
   <hasActor rdf:resource="#Actor_2286570_Belmont_Cameli"/>
   <producedByStudio rdf:resource="#Studio_125281_PlayStation_Productions"/>
   <producedByStudio rdf:resource="#Studio_149696_Coin_Operated"/>
-  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.512</tmdbRating>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.5</tmdbRating>
   <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15000000</budget>
-  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50023607</revenue>
+  <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">51515949</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">103</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-04-23</releaseDate>
 </owl:NamedIndividual>
@@ -1154,7 +1210,7 @@
   <hasActor rdf:resource="#Actor_1482198_Owen_Patrick_Joyner"/>
   <producedByStudio rdf:resource="#Studio_12_New_Line_Cinema"/>
   <producedByStudio rdf:resource="#Studio_48788_Practical_Pictures"/>
-  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.009</tmdbRating>
+  <tmdbRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.013</tmdbRating>
   <budget rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50000000</budget>
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">213514062</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">110</runtime>
@@ -1282,7 +1338,7 @@
   <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">39459</personTmdbID>
   <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1982-04-05</birthDate>
-  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2005</careerStartYear>
 </owl:NamedIndividual>
@@ -1551,7 +1607,7 @@
   <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3894</personTmdbID>
   <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1974-01-30</birthDate>
-  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
+  <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1983</careerStartYear>
 </owl:NamedIndividual>
