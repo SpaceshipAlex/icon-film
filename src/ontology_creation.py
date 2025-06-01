@@ -60,6 +60,24 @@ with onto: # per evitare di scrivere (namespace = onto) in ogni classe, si scriv
     class runtime(DataProperty, FunctionalProperty):
         domain = [Film]
         range = [int]
+    class directorExperienceAtRelease(DataProperty, FunctionalProperty):
+        domain = [Film]
+        range = [int]
+    class directorAvgRatingBeforeFilm(DataProperty, FunctionalProperty):
+        domain = [Film]
+        range = [float]
+    class directorFilmCountBeforeFilm(DataProperty, FunctionalProperty):
+        domain = [Film]
+        range = [int]
+    class actorsAvgExperienceAtRelease(DataProperty, FunctionalProperty):
+        domain = [Film]
+        range = [float]
+    class actorsAvgRatingInPrevious2Years(DataProperty, FunctionalProperty):
+        domain = [Film]
+        range = [float]
+    class castSize(DataProperty, FunctionalProperty):
+        domain = [Film]
+        range = [int]
 
     class personName(DataProperty, FunctionalProperty):
         domain = [Person]
@@ -85,6 +103,9 @@ with onto: # per evitare di scrivere (namespace = onto) in ogni classe, si scriv
     
     class avgRatingOfDirectedFilms(DataProperty, FunctionalProperty):
         domain = [Director]
+        range = [float]
+    class avgRatingOfActedFilms(DataProperty, FunctionalProperty):
+        domain = [Actor]
         range = [float]
     class nFilmsDirected(DataProperty, FunctionalProperty):
         domain = [Director]
