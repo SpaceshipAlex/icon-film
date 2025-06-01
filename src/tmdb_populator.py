@@ -33,7 +33,7 @@ def fetchAndAddMovie(movieID):
             currentFilm = onto.search_one(iri = f"*{filmIRI}")
             if not currentFilm:
                 currentFilm = onto.Film(filmIRI)
-            currentFilm.title = movieDetails.get('title')
+            currentFilm.filmTitle = movieDetails.get('title')
             currentFilm.tmdbRating = float(movieDetails.get('vote_average', 0.0))
             currentFilm.budget = int(movieDetails.get('budget', 0))
             currentFilm.revenue = int(movieDetails.get('revenue', 0))

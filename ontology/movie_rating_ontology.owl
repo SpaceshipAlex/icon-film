@@ -242,6 +242,10 @@
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">148</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-04-23</releaseDate>
+  <directorExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorExperienceAtRelease>
+  <directorAvgRatingBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</directorAvgRatingBeforeFilm>
+  <directorFilmCountBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorFilmCountBeforeFilm>
+  <actorsAvgExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">21.8</actorsAvgExperienceAtRelease>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Genre_53_Thriller">
@@ -262,6 +266,8 @@
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1937-01-01</birthDate>
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Israel</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfDirectedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.937</avgRatingOfDirectedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_45471_Camille_Keaton">
@@ -273,6 +279,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1970</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.937</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_138860_Jamie_Bernadette">
@@ -284,6 +291,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2008</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.937</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_142402_Maria_Olsen">
@@ -295,6 +303,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">South Africa</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2005</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.937</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_1243166_Jim_Tavaré">
@@ -306,6 +315,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1984</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.937</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_2263386_Jonathan_Peacy">
@@ -313,6 +323,8 @@
   <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jonathan Peacy</personName>
   <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2263386</personTmdbID>
   <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.937</avgRatingOfActedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_68200_Deja_Vu">
@@ -340,6 +352,10 @@
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">97</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1978-11-17</releaseDate>
+  <directorExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorExperienceAtRelease>
+  <directorAvgRatingBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</directorAvgRatingBeforeFilm>
+  <directorFilmCountBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorFilmCountBeforeFilm>
+  <actorsAvgExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.2</actorsAvgExperienceAtRelease>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Genre_12_Adventure">
@@ -375,6 +391,8 @@
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1932-12-12</birthDate>
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfDirectedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.4</avgRatingOfDirectedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1978</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_24343_Peter_Mayhew">
@@ -386,6 +404,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1977</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.4</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_2_Mark_Hamill">
@@ -397,6 +416,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1970</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.4</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_4_Carrie_Fisher">
@@ -408,6 +428,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1969</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.4</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_3_Harrison_Ford">
@@ -419,6 +440,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1964</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.4</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_6_Anthony_Daniels">
@@ -430,6 +452,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1969</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.4</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_1556_20th_Century_Fox_Television">
@@ -462,6 +485,10 @@
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">58228460</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">85</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2009-03-12</releaseDate>
+  <directorExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">24</directorExperienceAtRelease>
+  <directorAvgRatingBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</directorAvgRatingBeforeFilm>
+  <directorFilmCountBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorFilmCountBeforeFilm>
+  <actorsAvgExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.0</actorsAvgExperienceAtRelease>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Genre_28_Action">
@@ -483,6 +510,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">British Hong Kong</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1985</careerStartYear>
+  <avgRatingOfDirectedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.903</avgRatingOfDirectedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_503_Justin_Chatwin">
@@ -494,6 +522,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Canada</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2001</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.903</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_1619_Chow_Yun_Fat">
@@ -505,6 +534,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">British Hong Kong</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1973</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.903</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_78323_Joon_Park">
@@ -516,6 +546,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">South Korea</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1999</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.903</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_78324_Jamie_Chung">
@@ -527,6 +558,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2004</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.903</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_4730_Emmy_Rossum">
@@ -538,6 +570,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1993</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.903</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_81135_World_Film_Magic">
@@ -566,6 +599,10 @@
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-23</releaseDate>
+  <directorExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorExperienceAtRelease>
+  <directorAvgRatingBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</directorAvgRatingBeforeFilm>
+  <directorFilmCountBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorFilmCountBeforeFilm>
+  <actorsAvgExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">11.6</actorsAvgExperienceAtRelease>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Genre_9648_Mystery">
@@ -579,6 +616,8 @@
   <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1517250</personTmdbID>
   <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfDirectedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.4</avgRatingOfDirectedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_2182738_India_Fowler">
@@ -589,6 +628,8 @@
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-01-01</birthDate>
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.4</avgRatingOfActedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_2971462_Suzanna_Son">
@@ -599,6 +640,8 @@
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1995-10-31</birthDate>
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.4</avgRatingOfActedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_1529436_Fina_Strazza">
@@ -606,6 +649,8 @@
   <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fina Strazza</personName>
   <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1529436</personTmdbID>
   <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.4</avgRatingOfActedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_77795_Katherine_Waterston">
@@ -617,6 +662,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2006</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.4</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_3127_Lili_Taylor">
@@ -628,6 +674,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1986</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.4</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_7076_Chernin_Entertainment">
@@ -652,6 +699,10 @@
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">205176583</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">109</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-03-12</releaseDate>
+  <directorExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">29</directorExperienceAtRelease>
+  <directorAvgRatingBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</directorAvgRatingBeforeFilm>
+  <directorFilmCountBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorFilmCountBeforeFilm>
+  <actorsAvgExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">25.8</actorsAvgExperienceAtRelease>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Director_87742_Marc_Webb">
@@ -663,6 +714,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1996</careerStartYear>
+  <avgRatingOfDirectedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.296</avgRatingOfDirectedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_2217977_Rachel_Zegler">
@@ -674,6 +726,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2015</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.296</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_90633_Gal_Gadot">
@@ -685,6 +738,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Israel</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2004</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.296</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_1869968_Andrew_Burnap">
@@ -696,6 +750,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2014</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.296</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_3555_Jeremy_Swift">
@@ -707,6 +762,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1981</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.296</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_19978_Jason_Kravits">
@@ -718,6 +774,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1982</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.296</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_2_Walt_Disney_Pictures">
@@ -746,6 +803,10 @@
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">116</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-12-12</releaseDate>
+  <directorExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorExperienceAtRelease>
+  <directorAvgRatingBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</directorAvgRatingBeforeFilm>
+  <directorFilmCountBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorFilmCountBeforeFilm>
+  <actorsAvgExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">24.8</actorsAvgExperienceAtRelease>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Director_2374023_Galder_Gaztelu_Urrutia">
@@ -756,6 +817,8 @@
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1974-03-18</birthDate>
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spain</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfDirectedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.206</avgRatingOfDirectedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2024</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_17628_Mary_Elizabeth_Winstead">
@@ -767,6 +830,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1997</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.206</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_28847_Rafe_Spall">
@@ -778,6 +842,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2001</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.206</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_11478_Lorraine_Bracco">
@@ -789,6 +854,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1979</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.206</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_1598589_Dixie_Egerickx">
@@ -800,6 +866,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2015</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.206</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_439097_César_Domboy">
@@ -811,6 +878,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">France</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2004</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.206</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_11068_Nostromo_Pictures">
@@ -842,6 +910,10 @@
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">940583805</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-03-31</releaseDate>
+  <directorExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorExperienceAtRelease>
+  <directorAvgRatingBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</directorAvgRatingBeforeFilm>
+  <directorFilmCountBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorFilmCountBeforeFilm>
+  <actorsAvgExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">19.6</actorsAvgExperienceAtRelease>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Genre_35_Comedy">
@@ -857,6 +929,8 @@
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1979-07-18</birthDate>
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfDirectedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.497</avgRatingOfDirectedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_117642_Jason_Momoa">
@@ -868,6 +942,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1999</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.497</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_70851_Jack_Black">
@@ -879,6 +954,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1982</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.497</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_2680307_Sebastian_Eugene_Hansen">
@@ -888,6 +964,8 @@
   <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-04-06</birthDate>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.497</avgRatingOfActedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_2604515_Emma_Myers">
@@ -899,6 +977,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2010</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.497</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_1075037_Danielle_Brooks">
@@ -910,6 +989,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2011</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.497</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_174_Warner_Bros__Pictures">
@@ -940,6 +1020,10 @@
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">98652557</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">116</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-03-26</releaseDate>
+  <directorExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25</directorExperienceAtRelease>
+  <directorAvgRatingBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</directorAvgRatingBeforeFilm>
+  <directorFilmCountBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorFilmCountBeforeFilm>
+  <actorsAvgExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.2</actorsAvgExperienceAtRelease>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Genre_80_Crime">
@@ -956,6 +1040,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2000</careerStartYear>
+  <avgRatingOfDirectedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.67</avgRatingOfDirectedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_976_Jason_Statham">
@@ -967,6 +1052,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1998</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.67</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_973_Jason_Flemyng">
@@ -978,6 +1064,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1991</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.67</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_17817_Merab_Ninidze">
@@ -988,6 +1075,8 @@
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1965-11-03</birthDate>
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Soviet Union</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.67</avgRatingOfActedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_1011106_Maximilian_Osinski">
@@ -998,6 +1087,8 @@
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1984-04-01</birthDate>
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Austria</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.67</avgRatingOfActedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_950125_Cokey_Falkow">
@@ -1005,6 +1096,8 @@
   <personName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cokey Falkow</personName>
   <personTmdbID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">950125</personTmdbID>
   <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</personGender>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.67</avgRatingOfActedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_118475_Cedar_Park_Entertainment">
@@ -1034,6 +1127,10 @@
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">51515949</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">103</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-04-23</releaseDate>
+  <directorExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">19</directorExperienceAtRelease>
+  <directorAvgRatingBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</directorAvgRatingBeforeFilm>
+  <directorFilmCountBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorFilmCountBeforeFilm>
+  <actorsAvgExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.0</actorsAvgExperienceAtRelease>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Director_1302082_David_F__Sandberg">
@@ -1045,6 +1142,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sweden</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2006</careerStartYear>
+  <avgRatingOfDirectedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.5</avgRatingOfDirectedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_3307906_Ella_Rubin">
@@ -1055,6 +1153,8 @@
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2001-09-02</birthDate>
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.5</avgRatingOfActedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_2342988_Michael_Cimino">
@@ -1066,6 +1166,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2015</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.5</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_1972166_Odessa_A_zion">
@@ -1077,6 +1178,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2011</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.5</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_2983147_Ji_young_Yoo">
@@ -1088,6 +1190,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2021</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.5</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_2286570_Belmont_Cameli">
@@ -1099,6 +1202,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2018</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.5</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_125281_PlayStation_Productions">
@@ -1129,6 +1233,10 @@
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">469021482</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">108</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-17</releaseDate>
+  <directorExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorExperienceAtRelease>
+  <directorAvgRatingBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</directorAvgRatingBeforeFilm>
+  <directorFilmCountBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorFilmCountBeforeFilm>
+  <actorsAvgExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">17.6</actorsAvgExperienceAtRelease>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Director_1540069_Dean_Fleischer_Camp">
@@ -1139,6 +1247,8 @@
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1982-01-01</birthDate>
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfDirectedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.1</avgRatingOfDirectedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_3988423_Maia_Kealoha">
@@ -1149,6 +1259,8 @@
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-12-14</birthDate>
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.1</avgRatingOfActedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_3025125_Sydney_Agudong">
@@ -1158,6 +1270,8 @@
   <personGender rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</personGender>
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-11-13</birthDate>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.1</avgRatingOfActedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_66193_Chris_Sanders">
@@ -1169,6 +1283,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1984</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.1</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_58225_Zach_Galifianakis">
@@ -1180,6 +1295,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1996</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.1</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_141034_Billy_Magnussen">
@@ -1191,6 +1307,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2007</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.1</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_118854_Rideback">
@@ -1215,6 +1332,10 @@
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">213514062</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">110</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-14</releaseDate>
+  <directorExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">22</directorExperienceAtRelease>
+  <directorAvgRatingBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</directorAvgRatingBeforeFilm>
+  <directorFilmCountBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorFilmCountBeforeFilm>
+  <actorsAvgExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.0</actorsAvgExperienceAtRelease>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Director_1938317_Adam_B__Stein">
@@ -1225,6 +1346,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2003</careerStartYear>
+  <avgRatingOfDirectedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.013</avgRatingOfDirectedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_3480304_Kaitlyn_Santa_Juana">
@@ -1235,6 +1357,8 @@
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1996-04-19</birthDate>
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Canada</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.013</avgRatingOfActedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_1547148_Teo_Briones">
@@ -1245,6 +1369,8 @@
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2005-01-11</birthDate>
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.013</avgRatingOfActedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_58724_Rya_Kihlstedt">
@@ -1256,6 +1382,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1993</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.013</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_144852_Richard_Harmon">
@@ -1267,6 +1394,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Canada</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2003</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.013</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_1482198_Owen_Patrick_Joyner">
@@ -1278,6 +1406,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2014</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.013</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_12_New_Line_Cinema">
@@ -1308,6 +1437,10 @@
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">239047050</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">170</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-17</releaseDate>
+  <directorExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">32</directorExperienceAtRelease>
+  <directorAvgRatingBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</directorAvgRatingBeforeFilm>
+  <directorFilmCountBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorFilmCountBeforeFilm>
+  <actorsAvgExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">35.6</actorsAvgExperienceAtRelease>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Director_9033_Christopher_McQuarrie">
@@ -1319,6 +1452,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1993</careerStartYear>
+  <avgRatingOfDirectedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.1</avgRatingOfDirectedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_500_Tom_Cruise">
@@ -1330,6 +1464,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1981</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.1</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_39459_Hayley_Atwell">
@@ -1341,6 +1476,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2005</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.1</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_10182_Ving_Rhames">
@@ -1352,6 +1488,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1984</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.1</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_11108_Simon_Pegg">
@@ -1363,6 +1500,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1995</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.1</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_65344_Esai_Morales">
@@ -1374,6 +1512,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1982</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.1</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_4_Paramount_Pictures">
@@ -1403,6 +1542,10 @@
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">245066411</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">175</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1972-03-14</releaseDate>
+  <directorExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</directorExperienceAtRelease>
+  <directorAvgRatingBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</directorAvgRatingBeforeFilm>
+  <directorFilmCountBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorFilmCountBeforeFilm>
+  <actorsAvgExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.8</actorsAvgExperienceAtRelease>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Genre_18_Drama">
@@ -1419,6 +1562,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1962</careerStartYear>
+  <avgRatingOfDirectedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.686</avgRatingOfDirectedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_3084_Marlon_Brando">
@@ -1430,6 +1574,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1944</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.686</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_1158_Al_Pacino">
@@ -1441,6 +1586,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1967</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.686</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_3085_James_Caan">
@@ -1452,6 +1598,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1961</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.686</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_3087_Robert_Duvall">
@@ -1463,6 +1610,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1952</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.686</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_3086_Richard_S__Castellano">
@@ -1473,6 +1621,8 @@
   <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1933-09-04</birthDate>
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.686</avgRatingOfActedFilms>
+  <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1972</careerStartYear>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_10211_Alfran_Productions">
@@ -1496,6 +1646,10 @@
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">28341469</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">142</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1994-09-23</releaseDate>
+  <directorExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">13</directorExperienceAtRelease>
+  <directorAvgRatingBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</directorAvgRatingBeforeFilm>
+  <directorFilmCountBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorFilmCountBeforeFilm>
+  <actorsAvgExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">16.6</actorsAvgExperienceAtRelease>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Director_4027_Frank_Darabont">
@@ -1507,6 +1661,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1981</careerStartYear>
+  <avgRatingOfDirectedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.7</avgRatingOfDirectedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_504_Tim_Robbins">
@@ -1518,6 +1673,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1982</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.7</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_192_Morgan_Freeman">
@@ -1529,6 +1685,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1964</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.7</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_4029_Bob_Gunton">
@@ -1540,6 +1697,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1981</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.7</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_6573_William_Sadler">
@@ -1551,6 +1709,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1977</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.7</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_6574_Clancy_Brown">
@@ -1562,6 +1721,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1983</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.7</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Studio_97_Castle_Rock_Entertainment">
@@ -1588,6 +1748,10 @@
   <revenue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1004558444</revenue>
   <runtime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">152</runtime>
   <releaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-07-16</releaseDate>
+  <directorExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</directorExperienceAtRelease>
+  <directorAvgRatingBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</directorAvgRatingBeforeFilm>
+  <directorFilmCountBeforeFilm rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</directorFilmCountBeforeFilm>
+  <actorsAvgExperienceAtRelease rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">25.0</actorsAvgExperienceAtRelease>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Director_525_Christopher_Nolan">
@@ -1599,6 +1763,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1988</careerStartYear>
+  <avgRatingOfDirectedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.52</avgRatingOfDirectedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_3894_Christian_Bale">
@@ -1610,6 +1775,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1983</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.52</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_1810_Heath_Ledger">
@@ -1621,6 +1787,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Australia</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1992</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.52</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_6383_Aaron_Eckhart">
@@ -1632,6 +1799,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1992</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.52</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_3895_Michael_Caine">
@@ -1643,6 +1811,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1956</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.52</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Actor_1579_Maggie_Gyllenhaal">
@@ -1654,6 +1823,7 @@
   <nationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United States</nationality>
   <nAwards rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</nAwards>
   <careerStartYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1992</careerStartYear>
+  <avgRatingOfActedFilms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.52</avgRatingOfActedFilms>
 </owl:NamedIndividual>
 
 

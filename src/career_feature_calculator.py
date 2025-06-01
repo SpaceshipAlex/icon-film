@@ -58,14 +58,67 @@ def calcPersonFeatures():
                     person.careerStartYear = minYear
                     print(f"Impostato anno di inizio carriera per {person.personName} come {minYear}")
 
+
 ### Calcola le feature derivate per i film
 def calcFilmFeatures():
     print("Inizio calcolo feature per Film")
     with onto:
         for film in onto.Film.instances():
             print(f"Processando film {film.filmTitle}")
+
+            if film.hasDirector:
+                director = film.hasDirector[0]
+
+                if film.releaseDate and director.careerStartYear: # imposto l'esperienza del regista all'uscita del film
+                    releaseYear = film.releaseDate.year
+                    film.directorExperienceAtRelease = max(0, releaseYear - director.careerStartYear)
+                
+                if film.releaseDate: # imposto la valutazione media del regista prima di questo film e quanti film ha diretto prima di questo
+                    ratingsDirectedBefore = []
+                    filmCountBefore = 0
+                    for prevFilm in director.hasDirected:
+                        if prevFilm != film and prevFilm.releaseDate and prevFilm.releaseDate < film.releaseDate:
+                            filmCountBefore += 1
+                            if prevFilm.tmdbRating: 
+                                ratingsDirectedBefore.append(prevFilm.tmdbRating)
+
+                    if ratingsDirectedBefore:
+                        film.directorAvgRatingBeforeFilm = sum(ratingsDirectedBefore) / len(ratingsDirectedBefore)
+                    film.directorFilmCountBeforeFilm = filmCountBefore
+
+                    print(f"Il regista di {film.filmTitle} prima di dirigerlo aveva una valutazione media di {avgRatingsDirectedBefore}")
+
+                actors = list(film.hasActor)
+                if actors and film.releaseDate:
+                    actorsExperiencesAtRelease = []
+                    actorsRatingsPrevTwoYears = []
+                    twoYearsBeforeFilm = film.releaseDate - datetime.timedelta(days=2*365) # ottengo la data di due anni prima dell'uscita
+
+                    for actor in actors:
+                        if actor.careerStartYear: # aggiungo l'esperienza di questo attore alla lista
+                            actorsExperiencesAtRelease.append(max(0, film.releaseDate.year - actor.careerStartYear))
+
+                        singleActorRatingsPrevTwoYears = []
+
+                        for prevFilm in actor.hasActed:
+                            if prevFilm != film and prevFilm.releaseDate and prevFilm.releaseDate < film.releaseDate and prevFilm.releaseDate >= twoYearsBeforeFilm and prevFilm.tmdbRating:
+                                singleActorRatingsPrevTwoYears.append(prevFilm.tmdbRating)
+                        
+                        if singleActorRatingsPrevTwoYears:
+                            actorsRatingsPrevTwoYears = sum(singleActorRatingsPrevTwoYears) / len(singleActorRatingsPrevTwoYears)
+                    
+                    if actorsExperiencesAtRelease:
+                        film.actorsAvgExperienceAtRelease = sum(actorsExperiencesAtRelease) / len(actorsExperiencesAtRelease)
+                        print(f"Gli attori di {film.filmTitle} avevano un'esperienza media di {film.actorsAvgExperienceAtRelease} anni all'uscita del film")
+                    if actorsRatingsPrevTwoYears:
+                        film.actorsAvgRatingsInPrevious2Years = sum(actorsRatingsPrevTwoYears) / len(actorsRatingsPrevTwoYears)
+                        print(f"Gli attori di {film.filmTitle} avevano una valutazione media di {film.actorsAvgRatingsInPrevious2Years} all'uscita del film")
+                        
+### --- ###
         
 calcPersonFeatures()
-                
+calcFilmFeatures()   
+onto.save(file = ONTO_PATH, format = "rdfxml")
+print(f"KB con feature di carriera salvata")       
 
             
