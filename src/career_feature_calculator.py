@@ -86,8 +86,6 @@ def calcFilmFeatures():
                         film.directorAvgRatingBeforeFilm = sum(ratingsDirectedBefore) / len(ratingsDirectedBefore)
                     film.directorFilmCountBeforeFilm = filmCountBefore
 
-                    print(f"Il regista di {film.filmTitle} prima di dirigerlo aveva una valutazione media di {avgRatingsDirectedBefore}")
-
                 actors = list(film.hasActor)
                 if actors and film.releaseDate:
                     actorsExperiencesAtRelease = []
@@ -109,10 +107,8 @@ def calcFilmFeatures():
                     
                     if actorsExperiencesAtRelease:
                         film.actorsAvgExperienceAtRelease = sum(actorsExperiencesAtRelease) / len(actorsExperiencesAtRelease)
-                        print(f"Gli attori di {film.filmTitle} avevano un'esperienza media di {film.actorsAvgExperienceAtRelease} anni all'uscita del film")
                     if actorsRatingsPrevTwoYears:
                         film.actorsAvgRatingsInPrevious2Years = sum(actorsRatingsPrevTwoYears) / len(actorsRatingsPrevTwoYears)
-                        print(f"Gli attori di {film.filmTitle} avevano una valutazione media di {film.actorsAvgRatingsInPrevious2Years} all'uscita del film")
                         
 ### --- ###
         
