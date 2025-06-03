@@ -138,6 +138,7 @@ with onto: # per evitare di scrivere (namespace = onto) in ogni classe, si scriv
         domain = [Actor]
         range = [int]
 
+    # TODO valutare se rimuovere
     class awardName(DataProperty, FunctionalProperty):
         domain = [Award]
         range = [str]
