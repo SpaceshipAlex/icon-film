@@ -205,6 +205,7 @@ def getStudioJaccardSimilarity(firstFilmIRI, secondFilmIRI):
     
     return len(firstStudios.intersection(secondStudios)) / len(firstStudios.union(secondStudios)) if len(firstStudios.union(secondStudios)) > 0 else 0.0
 
+# Calcola la similarità tra due film con le misure e i pesi definiti in precedenza
 def calcFilmSimilarity(firstFilmIRI, secondFilmIRI, weights):
     if firstFilmIRI == secondFilmIRI:
         return 1.0
@@ -228,6 +229,50 @@ def calcFilmSimilarity(firstFilmIRI, secondFilmIRI, weights):
 
     return totalSimilarity
 
+### --- ###
 
+allFilmIris = [f.iri for f in onto.Film.instances()] # carico gli IRI di tutti i film
+if not allFilmIris:
+    print("Nessun film nella KB, impossibile costruire il kernel.")
+    exit()
 
-    
+splitID = int(len(allFilmIris) * 0.8) # ottengo l'indice dove verrà divisa la lista dei film tra training e test
+trainFilmIris = allFilmIris[:splitID]
+testFilmIris = allFilmIris[splitID:]
+
+if not trainFilmIris or not testFilmIris:
+    print("Il training e/o test set sono vuoti dopo lo split, impossibile costruire il kernel.")
+    exit()
+
+print(f"Inizio costruzione matrici KTrain e KTest, {len(trainFilmIris)} film di training e {len(testFilmIris)} film di test")
+
+lenTrain = len(trainFilmIris)
+KTrain = np.zeros((lenTrain, lenTrain))
+
+for i in range(lenTrain):
+    for j in range(i, lenTrain):
+        sim = calcFilmSimilarity(trainFilmIris[i], trainFilmIris[j], SIMILARITY_WEIGHTS)
+        KTrain[i, j] = sim
+        KTrain[j, i] = sim
+    print(f"KTrain: {i+1}/{lenTrain} righe completate")
+
+lenTest = len(testFilmIris)
+KTest = np.zeros((lenTest, lenTrain))
+
+for i in range(lenTest):
+    for j in range(lenTrain):
+        sim = calcFilmSimilarity(testFilmIris[i], trainFilmIris[j], SIMILARITY_WEIGHTS)
+        KTest[i, j] = sim
+    print(f"KTest: {i+1}/{lenTest} righe completate")
+
+np.save("kernel/KTrain.npy", KTrain)
+np.save("kernel/KTest.npy", KTest)
+
+with open("kernel/trainFilmIris.txt", "w") as f:
+    for iri in trainFilmIris:
+        f.write(f"{iri}\n")
+with open("kernel/testFilmIris.txt", "w") as f:
+    for iri in testFilmIris:
+        f.write(f"{iri}\n")
+
+print("\nMatrici Kernel e IRI dei film di training e test salvati.")
