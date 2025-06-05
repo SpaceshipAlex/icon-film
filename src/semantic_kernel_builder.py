@@ -6,7 +6,7 @@ import math
 
 ONTO_FILENAME = "movie_rating_ontology.owl"
 ONTO_PATH = os.path.join("ontology", ONTO_FILENAME)
-# Pesi delle similarità tra due film, inseriti logicamente, da fare tuning
+# Pesi delle similarità tra due film, inseriti intuitivamente, da fare tuning
 SIMILARITY_WEIGHTS = {
     'directorIdentity': 0.15,
     'directorExperience': 0.1,
