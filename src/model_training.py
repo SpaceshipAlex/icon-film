@@ -69,16 +69,16 @@ def getBaselineFeaturesFromKB(iris):
         directorTotFilms = (director.nFilmsDirected if director.nFilmsDirected else 0) if director else 0
 
         features.append([budget, runtime, releaseYear, releaseMonth, directorExp, directorRating, directorFilmsBefore, castSize, 
-                         actorsExp, actorsRating, isAuteur, isPrestige, hasCollaboration, director, directorTotAwards, directorTotFilms])
+                         actorsExp, actorsRating, isAuteur, isPrestige, hasCollaboration, directorTotAwards, directorTotFilms])
         
     featureNames = ['budget', 'runtime', 'releaseYear', 'releaseMonth', 'directorExp', 'directorRating', 'directorFilmsBefore', 'castSize',
-                    'actorsExp', 'actorsRating', 'isAuteur', 'isPrestige', 'hasCollaborations', 'director', 'directorTotAwards', 'directorTotFilms']
+                    'actorsExp', 'actorsRating', 'isAuteur', 'isPrestige', 'hasCollaborations', 'directorTotAwards', 'directorTotFilms']
     return pd.DataFrame(features, columns = featureNames)
     
 ### --- ###
 
-trainIris = loadIrisFromFile("kernel/trainFilmIris")
-testIris = loadIrisFromFile("kernel/testFilmIris")
+trainIris = loadIrisFromFile("kernel/trainFilmIris.txt")
+testIris = loadIrisFromFile("kernel/testFilmIris.txt")
 
 if not trainIris or not testIris:
     print("Lista IRI dei film di training e/o test non trovata o vuota, impossibile procedere.")
@@ -126,7 +126,47 @@ print(f"Target di test: {len(testTragetsReg)} (regressione), {len(testTargetsCla
 if KTrain is not None and (KTrain.shape[0] != len(trainTargetsReg) or (KTrain.shape[1] != len(trainTargetsReg))):
     print("La dimensione di KTrain è diversa dal numero di target di training dopo il filtraggio, errore.")
     exit()
-elif KTest is not None and (KTest.shape[0] != len(testTragetsReg) or (KTest.shape[1] != len(testTragetsReg))):
-    print("La dimensione di KTest è diversa dal numero di target di training dopo il filtraggio, errore.")
+elif KTest is not None and KTrain is not None and (KTest.shape[0] != len(testTragetsReg) or (KTest.shape[1] != KTrain.shape[0])):
+    print("La dimensione di KTest è diversa dal numero di target di training dopo il filtraggio o dal numero di colonne di KTrain, errore.")
     exit()
 
+trainBaselineFeatures = getBaselineFeaturesFromKB(trainIris)
+testBaselineFeatures = getBaselineFeaturesFromKB(testIris)
+print(f"Feature di baseline caricate: {trainBaselineFeatures.shape} (train), {testBaselineFeatures.shape} (test)")
+
+numericFeatureNames = ['budget', 'runtime', 'releaseYear', 'releaseMonth', 'directorExp', 'directorRating', 'directorFilmsBefore', 'castSize',
+                    'actorsExp', 'actorsRating', 'directorTotAwards', 'directorTotFilms'] # Lista di nomi delle feature numeriche, che necessitano di scaling
+
+# Preprocessor: applico il trasformatore StandardScaler, che calcola la media e la deviazione standard di ciascuna colonna numerica e, quando viene usato
+# per trasformare i dati, sottrae la media e divide per la deviazione standard. Le colonne non numeriche sono ignorate in questo passo.
+baselinePreprocessor = ColumnTransformer (
+    transformers = [
+        ('num', StandardScaler(), numericFeatureNames) # Applico il trasformatore StandardScaler
+    ],
+    remainder = 'passthrough' # Ignoro le feature non numeriche (ossia quelle non in numericFeatureNames)
+)
+
+# Pipeline per la regressione: concatena il passaggio di preprocessing, dettagliato precedentemente, con il passaggio di regressione. Uso il modello
+# RandomForest, con 100 alberi decisionali (valore comune) e random state 3 (in modo da rendere i risultati riproducibili). n_jobs = -1 per usare tutti i core della CPU
+rfRegressor = Pipeline(steps = [
+    ('preprocessor', baselinePreprocessor),
+    ('regressor', RandomForestRegressor(n_estimators = 100, random_state = 3, n_jobs = -1))
+])
+print("Addestramento Baseline Regressor...")
+if not trainBaselineFeatures.empty and len(trainTargetsReg) > 0:
+    rfRegressor.fit(trainBaselineFeatures, trainTargetsReg) # Effettuo l'addestramento per la regressione
+    print("Baseline Regressor addestrato.")
+else:
+    print("Dati di training per baseline mancanti o vuoti.")
+
+# Pipeline per la classificazione: come sopra
+rfClassifier = Pipeline(steps = [
+    ('preprocessor', baselinePreprocessor),
+    ('regressor', RandomForestClassifier(n_estimators = 100, random_state = 3, n_jobs = -1))
+])
+print("Addestramento Baseline Classifier...")
+if not trainBaselineFeatures.empty and len(trainTargetsClass) > 0:
+    rfRegressor.fit(trainBaselineFeatures, trainTargetsClass) # Effettuo l'addestramento per la classificazione
+    print("Baseline Classifier addestrato.")
+else:
+    print("Dati di training per baseline mancanti o vuoti.")
