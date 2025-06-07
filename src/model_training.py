@@ -98,7 +98,7 @@ else:
     print("Matrici KTrain e KTest non trovate, impossibile procedere.")
 
 trainTargetsReg, trainTargetsClass, trainValidIris = getTargetsFromKB(trainIris)
-testTragetsReg, testTargetsClass, testValidIris = getTargetsFromKB(testIris)
+testTargetsReg, testTargetsClass, testValidIris = getTargetsFromKB(testIris)
 trainIndices = None
 testIndices = None
 
@@ -122,12 +122,12 @@ if len(testValidIris) < len(testIris):
     print("Filtrata KTest per gli indici validi")
 
 print(f"Target di training: {len(trainTargetsReg)} (regressione), {len(trainTargetsClass)} (classificazione)")
-print(f"Target di test: {len(testTragetsReg)} (regressione), {len(testTargetsClass)} (classificazione)")
+print(f"Target di test: {len(testTargetsReg)} (regressione), {len(testTargetsClass)} (classificazione)")
 
 if KTrain is not None and (KTrain.shape[0] != len(trainTargetsReg) or (KTrain.shape[1] != len(trainTargetsReg))):
     print("La dimensione di KTrain è diversa dal numero di target di training dopo il filtraggio, errore.")
     exit()
-elif KTest is not None and KTrain is not None and (KTest.shape[0] != len(testTragetsReg) or (KTest.shape[1] != KTrain.shape[0])):
+elif KTest is not None and KTrain is not None and (KTest.shape[0] != len(testTargetsReg) or (KTest.shape[1] != KTrain.shape[0])):
     print("La dimensione di KTest è diversa dal numero di target di training dopo il filtraggio o dal numero di colonne di KTrain, errore.")
     exit()
 
@@ -201,8 +201,9 @@ if 'svc' in locals() and hasattr(svc, 'support_vectors_'):
     joblib.dump(svc, 'models/svc.joblib')
 
 # Salvataggio dei dati per la valutazione
-if 'testTargetsReg' in locals() and testTragetsReg.size > 0:
-    np.save("models/testTargetsReg.npy", testTragetsReg)
+
+if 'testTargetsReg' in locals() and testTargetsReg.size > 0:
+    np.save("models/testTargetsReg.npy", testTargetsReg)
 if 'testTargetsClass' in locals() and testTargetsClass.size > 0:
     np.save("models/testTargetsClass.npy", testTargetsClass)
 if 'testBaselineFeatures' in locals() and not testBaselineFeatures.empty:
