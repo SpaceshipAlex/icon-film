@@ -199,3 +199,17 @@ if 'svr' in locals() and hasattr(svr, 'support_vectors_'):
     joblib.dump(svr, 'models/svr.joblib')
 if 'svc' in locals() and hasattr(svc, 'support_vectors_'):
     joblib.dump(svc, 'models/svc.joblib')
+
+# Salvataggio dei dati per la valutazione
+if 'testTargetsReg' in locals() and testTragetsReg.size > 0:
+    np.save("models/testTargetsReg.npy", testTragetsReg)
+if 'testTargetsClass' in locals() and testTargetsClass.size > 0:
+    np.save("models/testTargetsClass.npy", testTargetsClass)
+if 'testBaselineFeatures' in locals() and not testBaselineFeatures.empty:
+    joblib.dump(testBaselineFeatures, "models/testBaselineFeatures.joblib")
+if 'KTest' in locals() and KTest is not None and KTest.size > 0:
+    np.save("kernel/KTest_filtered.npy", KTest)
+if 'testIris' in locals() and testIris:
+    with open("kernel/testFilmIris_filtered.txt", "w") as f:
+        for iri in testIris:
+            f.write(f"{iri}\n")
