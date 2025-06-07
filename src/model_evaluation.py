@@ -51,3 +51,13 @@ for modelKey, modelFile in modelNames.items():
         models[modelKey] = None
 
 print("Verifica di allineamento dati di test...")
+if testTargetsReg.size > 0 and not testBaselineFeatures.empty and len(testTargetsReg) != testBaselineFeatures.shape[0]:
+    print(f"Attenzione! Mismatch tra testTargetsReg ({len(testTargetsReg)} e testBaselineFeatures {testBaselineFeatures.shape[0]})")
+if testTargetsClass.size > 0 and not testBaselineFeatures.empty and len(testTargetsClass) != testBaselineFeatures.shape[0]:
+    print(f"Attenzione! Mismatch tra testTargetsClass ({len(testTargetsClass)} e testBaselineFeatures {testBaselineFeatures.shape[0]})")
+if testTargetsReg.size > 0 and KTest is not None and len(testTargetsReg) != KTest.shape[0]:
+    print(f"Attenzione! Mismatch tra testTargetsReg ({len(testTargetsReg)}) e KTest ({KTest.shape[0]})")
+if testTargetsClass.size > 0 and KTest is not None and len(testTargetsClass) != KTest.shape[0]:
+    print(f"Attenzione! Mismatch tra testTargetsClass ({len(testTargetsClass)}) e KTest ({KTest.shape[0]})")
+print("Verifica completata.")
+
