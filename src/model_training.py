@@ -10,6 +10,7 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline 
 import pandas as pd 
+import joblib
 
 ONTO_FILENAME = "movie_rating_ontology.owl"
 ONTO_PATH = os.path.join("ontology", ONTO_FILENAME)
@@ -170,3 +171,31 @@ if not trainBaselineFeatures.empty and len(trainTargetsClass) > 0:
     print("Baseline Classifier addestrato.")
 else:
     print("Dati di training per baseline mancanti o vuoti.")
+
+# Definizione del modello SVR semantico con kernel precalcolato e valori di C ed epsilon di default
+svr = SVR(kernel = 'precomputed', C = 1.0, epsilon = 0.1)
+print("Addestramento modello semantico SVR...")
+if KTrain is not None and len(trainTargetsReg) > 0:
+    svr.fit(KTrain, trainTargetsClass)
+    print("Modello semantico SVR addestrato.")
+else:
+    print("KTrain o trainTargetsReg mancanti per SVR.")
+
+# Definizione del modello SVC semantico con kernel precalcolato, valore di C di default e misure di probabilità attive
+svc = SVC(kernel = 'precomputed', C = 1.0, probability = True, random_state = 3)
+print("Addestramento modello semantico SVC...")
+if KTrain is not None and len(trainTargetsClass) > 0:
+    svc.fit(KTrain, trainTargetsClass)
+    print("Modello semantico SVC addestrato.")
+else:
+    print("Ktrain o trainTargetsClass mancanti per SVC.")
+
+# Salvataggio dei modelli, se sono stati addestrati (hanno attributo steps per i baseline e support_vectors_ per i modelli semantici)
+if 'rfRegressor' in locals() and hasattr(rfRegressor, 'steps'):
+    joblib.dump(rfRegressor, 'models/rfRegressorBaseline.joblib')
+if 'rfClassifier' in locals() and hasattr(rfClassifier, 'steps'):
+    joblib.dump(rfClassifier, 'models/rfClassifierBaseline.joblib') 
+if 'svr' in locals() and hasattr(svr, 'support_vectors_'):
+    joblib.dump(svr, 'models/svr.joblib')
+if 'svc' in locals() and hasattr(svc, 'support_vectors_'):
+    joblib.dump(svc, 'models/svc.joblib')

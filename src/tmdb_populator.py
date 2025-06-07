@@ -5,7 +5,7 @@ import utils
 ONTO_FILENAME = "movie_rating_ontology.owl"
 ONTO_PATH = os.path.join("ontology", ONTO_FILENAME)
 RATING_BANDS = [(0, 3.4), (3.5, 5.4), (5.5, 6.9), (7.0, 8.4), (8.5, 10.0)] # fasce di voti secondo le quali effettuare il popolamento
-MOVIES_PER_BAND = 2 # numero di film da prelevare per ognuna delle fasce
+MOVIES_PER_BAND = 20 # numero di film da prelevare per ognuna delle fasce
 
 onto = get_ontology(ONTO_PATH).load()
 
