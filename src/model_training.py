@@ -214,3 +214,10 @@ if 'testIris' in locals() and testIris:
     with open("kernel/testFilmIris_filtered.txt", "w") as f:
         for iri in testIris:
             f.write(f"{iri}\n")
+
+print("Esempi y_train_reg:", testTargetsReg[:20])
+print("Min/Max y_train_reg:", np.min(testTargetsReg), np.max(testTargetsReg))
+print("Media y_train_reg:", np.mean(testTargetsReg))
+
+print("NaN in y_train_reg:", np.isnan(trainTargetsReg).sum())
+print("NaN in y_test_reg:", np.isnan(testTargetsReg).sum())

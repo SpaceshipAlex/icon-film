@@ -3,6 +3,7 @@ import datetime
 import os
 import numpy as np
 import math
+import random
 
 ONTO_FILENAME = "movie_rating_ontology.owl"
 ONTO_PATH = os.path.join("ontology", ONTO_FILENAME)
@@ -235,6 +236,9 @@ allFilmIris = [f.iri for f in onto.Film.instances()] # carico gli IRI di tutti i
 if not allFilmIris:
     print("Nessun film nella KB, impossibile costruire il kernel.")
     exit()
+
+random.seed(3)
+random.shuffle(allFilmIris)
 
 splitID = int(len(allFilmIris) * 0.8) # ottengo l'indice dove verrà divisa la lista dei film tra training e test
 trainFilmIris = allFilmIris[:splitID]
