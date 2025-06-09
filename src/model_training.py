@@ -167,7 +167,7 @@ rfClassifier = Pipeline(steps = [
 ])
 print("Addestramento Baseline Classifier...")
 if not trainBaselineFeatures.empty and len(trainTargetsClass) > 0:
-    rfRegressor.fit(trainBaselineFeatures, trainTargetsClass) # Effettuo l'addestramento per la classificazione
+    rfClassifier.fit(trainBaselineFeatures, trainTargetsClass) # Effettuo l'addestramento per la classificazione
     print("Baseline Classifier addestrato.")
 else:
     print("Dati di training per baseline mancanti o vuoti.")
@@ -221,3 +221,5 @@ print("Media y_train_reg:", np.mean(testTargetsReg))
 
 print("NaN in y_train_reg:", np.isnan(trainTargetsReg).sum())
 print("NaN in y_test_reg:", np.isnan(testTargetsReg).sum())
+print("NaN in y_train_class:", np.isnan(trainTargetsClass).sum())
+print("NaN in y_test_class:", np.isnan(testTargetsClass).sum())

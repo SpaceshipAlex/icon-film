@@ -127,8 +127,8 @@ if 'testTargetsClass' in locals() and testTargetsClass.size > 0:
     if models.get('svc') and 'KTest' in locals() and KTest is not None and KTest.size > 0:
         if KTest.shape[0] == len(testTargetsClass):
             try:
-                pred = models.get('svc').predict(testBaselineFeatures)
-                predProba = models.get('svc').predict_proba(testBaselineFeatures)[:, 1]
+                pred = models.get('svc').predict(KTest)
+                predProba = models.get('svc').predict_proba(KTest)[:, 1]
 
                 accSemantic = accuracy_score(testTargetsClass, pred)
                 f1Semantic = f1_score(testTargetsClass, pred, average = 'binary')
@@ -155,4 +155,3 @@ if results:
 else:
     print("Nessun risultato da mostrare.")
 
-    
