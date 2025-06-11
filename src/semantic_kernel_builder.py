@@ -1,15 +1,14 @@
 from owlready2 import *
-import datetime
 import os
 import numpy as np
 import pandas as pd
 import math
-import random
 from sklearn.model_selection import train_test_split
 
 ONTO_FILENAME = "movie_rating_ontology.owl"
 ONTO_PATH = os.path.join("ontology", ONTO_FILENAME)
-# Pesi delle similarità tra due film, inseriti intuitivamente, da fare tuning
+# Pesi delle similarità tra due film, inseriti dopo una valutazione manuale di quali impattassero di più
+# e di meno la distribuzione delle similarità tra film
 SIMILARITY_WEIGHTS = {
     'directorIdentity': 0,
     'directorExperience': 0.15,
@@ -209,24 +208,25 @@ def splitFilmsStratified(allFilms):
     filmData = []
     for film in allFilms:
         if film.tmdbRating:
-            filmData.append({'iri': film.iri, 'rating': film.tmdbRating})
+            filmData.append({'iri': film.iri, 'rating': film.tmdbRating}) # ottengo iri e valutazione da ogni film
     
-    filmDataFrame = pd.DataFrame(filmData)
+    filmDataFrame = pd.DataFrame(filmData) # ottengo un dataframe dalla lista di dizionari
     print(f"Numero totale di film con rating: {len(filmDataFrame)}")
 
-    ratingBins = [0, 3.5, 5.5, 6.9, 8.5, 10.0]
+    ratingBins = [0, 3.5, 5.5, 6.9, 8.5, 10.0] # definisco i bin di valutazione
     ratingLabels = ['0-3.5', '3.5-5.5', '5.5-6.9', '6.9-8.5', '8.5-10.0']
 
+    # assegno ogni film ad uno dei bin
     filmDataFrame['ratingBin'] = pd.cut(filmDataFrame['rating'], bins = ratingBins, labels = ratingLabels, right = False, include_lowest = True)
     if filmDataFrame['ratingBin'].isnull().any():
-        print("Alcuni film non sono stati assegnati ad alcun bin, li rimuovo.")
-        filmDataFrame.dropna(subset = ['ratingBin'], inplace = True)
+        print("Alcuni film non sono stati assegnati ad alcun bin, li rimuovo.") 
+        filmDataFrame.dropna(subset = ['ratingBin'], inplace = True) # rimuovo i film non appartenenti a nessun bin (caso impossibile se i dati sono corretti)
     if filmDataFrame.empty:
-        print("Nessun film rimasto dopo l'assegnazione ai bin")
-        exit()
+        print("Nessun film rimasto dopo l'assegnazione ai bin") 
+        exit() # termino l'esecuzione se non ci sono film dopo l'assegnazione ai bin
     
     print("Stratificazione in corso...")
-    try:
+    try: # effettuo split train/test set usando i bin se possibile, altrimenti con shuffle
         trainDataFrame, testDataFrame = train_test_split(
             filmDataFrame, 
             test_size = 0.2, # il test set è il 20% del totale
@@ -245,7 +245,7 @@ def splitFilmsStratified(allFilms):
     
     print(F"Split completato, il training set contiene {len(trainDataFrame)} film e il test set {len(testDataFrame)}")
 
-    return trainDataFrame['iri'].tolist(), testDataFrame['iri'].tolist()
+    return trainDataFrame['iri'].tolist(), testDataFrame['iri'].tolist() # restituisco gli IRI dei film di train/test
 
 ### --- ###
 
@@ -254,22 +254,15 @@ if not allFilms:
     print("Nessun film nella KB, impossibile costruire il kernel.")
     exit()
 
-# random.seed(3)
-# random.shuffle(allFilms)
-
-# splitID = int(len(allFilms) * 0.8) # ottengo l'indice dove verrà divisa la lista dei film tra training e test
-# trainFilms = allFilms[:splitID]
-# testFilms = allFilms[splitID:]
-
-trainIris, testIris = splitFilmsStratified(allFilms)
+trainIris, testIris = splitFilmsStratified(allFilms) # ottengo gli IRI di film di train e test usando lo split con stratificazione
 trainFilms = []
 testFilms = []
 
-for iri in trainIris:
+for iri in trainIris: # ottengo i film dagli IRI di train
     film = onto.search_one(iri = f"*{iri}")
     if film:
         trainFilms.append(film)
-for iri in testIris:
+for iri in testIris: # ottengo i film dagli IRI di test
     film = onto.search_one(iri = f"*{iri}")
     if film:
         testFilms.append(film)
@@ -283,7 +276,7 @@ print(f"Inizio costruzione matrici KTrain e KTest, {len(testFilms)} film di trai
 lenTrain = len(trainFilms)
 KTrain = np.zeros((lenTrain, lenTrain))
 
-for i in range(lenTrain):
+for i in range(lenTrain): # calcolo KTrain: similarità tra tutti i film di training
     for j in range(i, lenTrain):
         sim = calcFilmSimilarity(trainFilms[i], trainFilms[j], SIMILARITY_WEIGHTS)
         KTrain[i, j] = sim
@@ -293,7 +286,7 @@ for i in range(lenTrain):
 lenTest = len(testFilms)
 KTest = np.zeros((lenTest, lenTrain))
 
-for i in range(lenTest):
+for i in range(lenTest): # calcolo KTest: similarità di tutti i film di test con tutti quelli di training
     for j in range(lenTrain):
         sim = calcFilmSimilarity(testFilms[i], trainFilms[j], SIMILARITY_WEIGHTS)
         KTest[i, j] = sim
@@ -305,6 +298,7 @@ np.save("kernel/KTest.npy", KTest)
 print(KTrain.shape)
 print(KTest.shape)
 
+# scrivo su file di testo gli IRI dei film di train/test
 with open("kernel/trainFilmIris.txt", "w") as f:
     for film in trainFilms:
         f.write(f"{film.iri}\n")
@@ -313,20 +307,3 @@ with open("kernel/testFilmIris.txt", "w") as f:
         f.write(f"{film.iri}\n")
 
 print("\nMatrici Kernel e IRI dei film di training e test salvati.")
-
-similarita_budget = []
-similarita_director = []
-similarita_genre = []
-similarita_actor = []
-
-for i in range (lenTrain):
-    for j in range (lenTrain):
-        similarita_budget.append(getBudgetSimilarity(trainFilms[i], trainFilms[j]))
-        similarita_director.append(getDirectorIdentitySimilarity(trainFilms[i], trainFilms[j]))
-        similarita_genre.append(getGenreJaccardSimilarity(trainFilms[i], trainFilms[j]))
-        similarita_actor.append(getActorJaccardSimilarity(trainFilms[i], trainFilms[j]))
-
-print(f"Budget: media {np.mean(similarita_budget):.3f}, std {np.std(similarita_budget):.3f}, % > 0.5 {(np.array(similarita_budget) > 0.5).mean():.3f}")
-print(f"Director: media {np.mean(similarita_director):.3f}, std {np.std(similarita_director):.3f}, % > 0.5 {(np.array(similarita_director) > 0.5).mean():.3f}")
-print(f"Genre: media {np.mean(similarita_genre):.3f}, std {np.std(similarita_genre):.3f}, % > 0.5 {(np.array(similarita_genre) > 0.5).mean():.3f}")
-print(f"Actor: media {np.mean(similarita_actor):.3f}, std {np.std(similarita_actor):.3f}, % > 0.5 {(np.array(similarita_actor) > 0.5).mean():.3f}")

@@ -1,12 +1,11 @@
 import numpy as np
 import os
 from owlready2 import *
-from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
+from sklearn.model_selection import GridSearchCV, StratifiedKFold
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 from sklearn.svm import SVR, SVC
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, roc_auc_score, make_scorer
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.metrics import mean_absolute_error, make_scorer
+from sklearn.preprocessing import StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline 
 import pandas as pd 
@@ -80,14 +79,13 @@ def getBaselineFeaturesFromKB(iris):
 
 # Effettua GridSearchCV per trovare il modello SVR con i migliori iperparametri
 def optimizeSVR(KTrain, trainTargetsReg, cv = 5, n_jobs = -1):
-    params = {
+    params = { # iperparametri tra cui effettuare la scelta del migliore, provando tutte le combinazioni
         'C': [0.01, 0.1, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000],
         'epsilon': [0.001, 0.01, 0.05, 0.1, 0.2, 0.3, 0.5, 1.0, 2.0],
         'gamma': ['scale']
     }
-    svr = SVR(kernel = 'precomputed')
+    svr = SVR(kernel = 'precomputed') # il kernel è stato già calcolato nel passo precedente
     maeScorer = make_scorer(mean_absolute_error, greater_is_better = False)
-
 
     gridSearch = GridSearchCV(
         estimator = svr,
@@ -279,6 +277,7 @@ baselinePreprocessor = ColumnTransformer (
     remainder = 'passthrough' # Ignoro le feature non numeriche (ossia quelle non in numericFeatureNames)
 )
 
+# Ottengo i 4 modelli usando GridSearchCV per ognuno
 rfRegressor = optimizeRFReg(trainBaselineFeatures, trainTargetsReg, baselinePreprocessor)
 rfClassifier = optimizeRFClass(trainBaselineFeatures, trainTargetsClass, baselinePreprocessor)
 svr = optimizeSVR(KTrain, trainTargetsReg)
@@ -308,51 +307,3 @@ if 'testIris' in locals() and testIris:
     with open("kernel/testFilmIris_filtered.txt", "w") as f:
         for iri in testIris:
             f.write(f"{iri}\n")
-
-# DIAGNOSTICA
-'''print("ANALISI TARGET")
-print(f"trainTargetsReg stats: mean={np.mean(trainTargetsReg):.2f}, std={np.std(trainTargetsReg):.2f}")
-print(f"testTargetsReg stats: mean={np.mean(testTargetsReg):.2f}, std={np.std(testTargetsClass):.2f}")
-print(f"Range trainTargets: [{np.min(trainTargetsReg):.2f}, {np.max(trainTargetsReg):.2f}]")
-print(f"Range testTargets: [{np.min(testTargetsReg):.2f}, {np.max(testTargetsReg):.2f}]")
-
-print("ANALISI KERNEL")
-print(f"KTrain shape: {KTrain.shape}")
-print(f"KTrain diagonal: {np.diag(KTrain)[:10]}")
-print(f"KTrain range: [{np.min(KTrain):.3f}, {np.max(KTrain):.3f}]")
-print(f"KTrain symmetry check: {np.allclose(KTrain, KTrain.T)}")
-
-plt.figure(figsize=(12, 4))
-plt.subplot(1, 3, 1)
-plt.hist(KTrain.flatten(), bins=50, alpha=0.7)
-plt.title("Distribuzione Valori Kernel")
-plt.xlabel("Valore Similarità")
-
-plt.subplot(1, 3, 2)
-plt.imshow(KTrain[:50, :50], cmap='viridis')
-plt.title("Heatmap Kernel (primi 50x50)")
-plt.colorbar()
-
-plt.subplot(1, 3, 3)
-plt.scatter(testTargetsReg, testTargetsReg, alpha=0.6)
-plt.title("Target Distribution")
-plt.xlabel("Rating Predetto")
-plt.ylabel("Rating Reale")
-plt.tight_layout()
-plt.show()
-
-print("VERIFICA BASELINE PREDICTION")
-baselinePred = np.full_like(testTargetsReg, np.mean(trainTargetsReg))
-baselineMse = np.mean((testTargetsReg - baselinePred)**2)
-print(f"Baseline MSE: {baselineMse:.2f}")
-
-print("CONTROLLO OVERFITTING")
-if hasattr(svr, 'predict'):
-    trainPred = svr.predict(KTrain)
-    trainMse = np.mean((trainTargetsReg - trainPred)**2)
-    testPred = svr.predict(KTest)
-    testMse = np.mean((testTargetsReg - testPred)**2)
-    print(f"Train MSE: {trainMse:.2f}")
-    print(f"Test MSE: {testMse:.2f}")
-    print(f"Overfitting Ratio: {testMse / trainMse:.2f}")
-    '''
