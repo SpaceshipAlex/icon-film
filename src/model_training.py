@@ -171,7 +171,7 @@ def optimizeRFReg(trainBaselineFeatures, trainTargetsReg, preprocessor, cv = 5, 
     return gridSearch.best_estimator_
 
 
-# Effettua GridSearchCV per trovare il modello Baseline Regressor (RandomForest) con i migliori iperparametri
+# Effettua GridSearchCV per trovare il modello Baseline Classifier (RandomForest) con i migliori iperparametri
 def optimizeRFClass(trainBaselineFeatures, trainTargetsClass, preprocessor, cv = 5, n_jobs = -1):
     params = {
         'regressor__n_estimators': [50, 100, 300, 500],
