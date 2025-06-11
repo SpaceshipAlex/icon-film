@@ -20,7 +20,7 @@ def executeWikidataQuery(sparqlQuery):
 
     try:
         results = sparql.query().convert()
-        time.sleep(0.05)
+        time.sleep(0.01) # 20 query al secondo
         return results["results"]["bindings"]
     except Exception as e:
         print(f"Errore query Wikidata: {e}\nErrore sollevato per query:\n{sparqlQuery}")
@@ -55,6 +55,7 @@ for person in personsToProcess:
     personName = person.personName if person.personName else "N/D"
     personTmdbID = person.personTmdbID if person.personTmdbID else "0"
     personWikidataID = getWikidataID(personTmdbID)
+    nProcessed += 1
 
     if not personWikidataID:
         continue
@@ -91,7 +92,6 @@ for person in personsToProcess:
         }} LIMIT 1
         """
     wikidataResults = executeWikidataQuery(personDetailsQuery)
-    nProcessed += 1
 
     if not wikidataResults:
         print(f"Nessun dettaglio trovato su Wikidata per {personName}")

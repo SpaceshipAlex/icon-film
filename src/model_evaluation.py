@@ -136,7 +136,7 @@ if 'testTargetsClass' in locals() and testTargetsClass.size > 0:
                 recallSemantic = recall_score(testTargetsClass, pred, average = 'binary')
                 aucSemantic = roc_auc_score(testTargetsClass, predProba) if len(np.unique(testTargetsClass)) > 1 else float('nan')
                 results['svc'] = {'Accuracy': accSemantic, 'F1': f1Semantic, 'Precision': precisionSemantic, 'Recall': recallSemantic, 'AUC': aucSemantic}
-                print(f"Baseline RF Classifier: Accuracy {accSemantic:.4f}, F1 {f1Semantic:.4f}, Precision {precisionSemantic:.4f}, Recall {recallSemantic:.4f}, AUC {aucSemantic:.4f}")
+                print(f"Semantic SVC: Accuracy {accSemantic:.4f}, F1 {f1Semantic:.4f}, Precision {precisionSemantic:.4f}, Recall {recallSemantic:.4f}, AUC {aucSemantic:.4f}")
             except Exception as e:
                 print(f"Errore durante la valutazione del Semantic SVC: {e}")
                 results['svc'] = {'Accuracy': float('nan'), 'F1': float('nan'), 'Precision': float('nan'), 'Recall': float('nan'), 'AUC': float('nan')}

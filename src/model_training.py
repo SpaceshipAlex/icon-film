@@ -1,16 +1,18 @@
 import numpy as np
 import os
 from owlready2 import *
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 from sklearn.svm import SVR, SVC
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, roc_auc_score
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, roc_auc_score, make_scorer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline 
 import pandas as pd 
 import joblib
+
+import matplotlib.pyplot as plt
 
 ONTO_FILENAME = "movie_rating_ontology.owl"
 ONTO_PATH = os.path.join("ontology", ONTO_FILENAME)
@@ -26,7 +28,7 @@ def loadIrisFromFile(filepath):
         return [line.strip() for line in f if line.strip()]
     
 ### Itera sugli IRI dei film e recupera i loro tmdbRating dalla KB
-def getTargetsFromKB(iris, qualityThreashold = 7.5):
+def getTargetsFromKB(iris, qualityThreshold = 7):
     targetsRegression = [] # Memorizza le valutazioni dei film per la regressione
     targetsClassification = [] # Memorizza le etichette binarie per la valutazione di un film (alta/bassa qualità) per la classificazione
     validIris = [] # IRI dei film per cui si è trovato un target valido
@@ -36,7 +38,7 @@ def getTargetsFromKB(iris, qualityThreashold = 7.5):
         if film and film.tmdbRating:
             rating = film.tmdbRating
             targetsRegression.append(rating)
-            targetsClassification.append(1 if rating >= qualityThreashold else 0)
+            targetsClassification.append(1 if rating >= qualityThreshold else 0)
             validIris.append(iri)
         else:
             print(f"Rating non trovato per {iri}, sarà escluso dai target.")
@@ -75,6 +77,136 @@ def getBaselineFeaturesFromKB(iris):
     featureNames = ['budget', 'runtime', 'releaseYear', 'releaseMonth', 'directorExp', 'directorRating', 'directorFilmsBefore', 'castSize',
                     'actorsExp', 'actorsRating', 'isAuteur', 'isPrestige', 'hasCollaborations', 'directorTotAwards', 'directorTotFilms']
     return pd.DataFrame(features, columns = featureNames)
+
+# Effettua GridSearchCV per trovare il modello SVR con i migliori iperparametri
+def optimizeSVR(KTrain, trainTargetsReg, cv = 5, n_jobs = -1):
+    params = {
+        'C': [0.01, 0.1, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000],
+        'epsilon': [0.001, 0.01, 0.05, 0.1, 0.2, 0.3, 0.5, 1.0, 2.0],
+        'gamma': ['scale']
+    }
+    svr = SVR(kernel = 'precomputed')
+    maeScorer = make_scorer(mean_absolute_error, greater_is_better = False)
+
+
+    gridSearch = GridSearchCV(
+        estimator = svr,
+        param_grid = params,
+        scoring = maeScorer,
+        cv = cv,
+        n_jobs = n_jobs,
+        verbose = 1,
+        return_train_score = True
+    )
+
+    print("Ottimizzazione SVR in corso...")
+    gridSearch.fit(KTrain, trainTargetsReg)
+    print(f"Migliori parametri SVR: {gridSearch.best_params_}")
+    print(f"Miglior MAE: {-gridSearch.best_score_:.4f}")
+
+    return gridSearch.best_estimator_
+
+# Effettua GridSearchCV per trovare il modello SVC con i migliori iperparametri
+def optimizeSVC(KTrain, trainTargetsClass, cv = 5, n_jobs = -1):
+    params = {
+        'C': [0.01, 0.1, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000],
+        'gamma': ['scale'],
+        'class_weight': [None, 'balanced'],
+        'probability': [True]
+    }
+    svc = SVC(kernel = 'precomputed')
+    stratifiedCv = StratifiedKFold(n_splits = cv, shuffle = True, random_state = 3)
+
+    gridSearch = GridSearchCV(
+        estimator = svc,
+        param_grid = params,
+        scoring = 'f1',
+        cv = stratifiedCv,
+        n_jobs = n_jobs,
+        verbose = 1,
+        return_train_score = True
+    )
+
+    print("Ottimizzazione SVC in corso...")
+    gridSearch.fit(KTrain, trainTargetsClass)
+    print(f"Migliori parametri SVC: {gridSearch.best_params_}")
+    print(f"Miglior F1: {-gridSearch.best_score_:.4f}")
+
+    return gridSearch.best_estimator_
+
+# Effettua GridSearchCV per trovare il modello Baseline Regressor (RandomForest) con i migliori iperparametri
+def optimizeRFReg(trainBaselineFeatures, trainTargetsReg, preprocessor, cv = 5, n_jobs = -1):
+    params = {
+        'regressor__n_estimators': [50, 100, 300, 500],
+        'regressor__max_depth': [None, 10, 20],
+        'regressor__min_samples_split': [2, 10],
+        'regressor__min_samples_leaf': [1, 4],
+        'regressor__max_features': ['sqrt', 0.5],
+        'regressor__bootstrap': [True, False],
+        'regressor__max_samples': [None, 0.8], 
+        'regressor__ccp_alpha': [0.0, 0.01]
+    }
+    rfRegressor = Pipeline(steps = [
+        ('preprocessor', preprocessor),
+        ('regressor', RandomForestRegressor(random_state = 3))
+    ])
+    maeScorer = make_scorer(mean_absolute_error, greater_is_better = False)
+
+
+    gridSearch = GridSearchCV(
+        estimator = rfRegressor,
+        param_grid = params,
+        scoring = maeScorer,
+        cv = cv,
+        n_jobs = n_jobs,
+        verbose = 1,
+        return_train_score = True
+    )
+
+    print("Ottimizzazione RF Regressor in corso...")
+    gridSearch.fit(trainBaselineFeatures, trainTargetsReg)
+    print(f"Migliori parametri RF: {gridSearch.best_params_}")
+    print(f"Miglior MAE: {-gridSearch.best_score_:.4f}")
+
+    return gridSearch.best_estimator_
+
+
+# Effettua GridSearchCV per trovare il modello Baseline Regressor (RandomForest) con i migliori iperparametri
+def optimizeRFClass(trainBaselineFeatures, trainTargetsClass, preprocessor, cv = 5, n_jobs = -1):
+    params = {
+        'regressor__n_estimators': [50, 100, 300, 500],
+        'regressor__max_depth': [None, 10, 20],
+        'regressor__min_samples_split': [2, 10],
+        'regressor__min_samples_leaf': [1, 4],
+        'regressor__max_features': ['sqrt', 0.5],
+        'regressor__bootstrap': [True, False],
+        'regressor__max_samples': [None, 0.8], 
+        'regressor__ccp_alpha': [0.0, 0.01],
+        'regressor__class_weight': [None, 'balanced']
+    }
+    rfRegressor = Pipeline(steps = [
+        ('preprocessor', preprocessor),
+        ('regressor', RandomForestClassifier(random_state = 3))
+    ])
+    stratifiedCv = StratifiedKFold(n_splits = cv, shuffle = True, random_state = 3)
+
+
+    gridSearch = GridSearchCV(
+        estimator = rfRegressor,
+        param_grid = params,
+        scoring = 'f1',
+        cv = stratifiedCv,
+        n_jobs = n_jobs,
+        verbose = 1,
+        return_train_score = True
+    )
+
+    print("Ottimizzazione RF Classifier in corso...")
+    gridSearch.fit(trainBaselineFeatures, trainTargetsClass)
+    print(f"Migliori parametri RF: {gridSearch.best_params_}")
+    print(f"Miglior F1: {-gridSearch.best_score_:.4f}")
+
+    return gridSearch.best_estimator_
     
 ### --- ###
 
@@ -147,48 +279,10 @@ baselinePreprocessor = ColumnTransformer (
     remainder = 'passthrough' # Ignoro le feature non numeriche (ossia quelle non in numericFeatureNames)
 )
 
-# Pipeline per la regressione: concatena il passaggio di preprocessing, dettagliato precedentemente, con il passaggio di regressione. Uso il modello
-# RandomForest, con 100 alberi decisionali (valore comune) e random state 3 (in modo da rendere i risultati riproducibili). n_jobs = -1 per usare tutti i core della CPU
-rfRegressor = Pipeline(steps = [
-    ('preprocessor', baselinePreprocessor),
-    ('regressor', RandomForestRegressor(n_estimators = 100, random_state = 3, n_jobs = -1))
-])
-print("Addestramento Baseline Regressor...")
-if not trainBaselineFeatures.empty and len(trainTargetsReg) > 0:
-    rfRegressor.fit(trainBaselineFeatures, trainTargetsReg) # Effettuo l'addestramento per la regressione
-    print("Baseline Regressor addestrato.")
-else:
-    print("Dati di training per baseline mancanti o vuoti.")
-
-# Pipeline per la classificazione: come sopra
-rfClassifier = Pipeline(steps = [
-    ('preprocessor', baselinePreprocessor),
-    ('regressor', RandomForestClassifier(n_estimators = 100, random_state = 3, n_jobs = -1))
-])
-print("Addestramento Baseline Classifier...")
-if not trainBaselineFeatures.empty and len(trainTargetsClass) > 0:
-    rfClassifier.fit(trainBaselineFeatures, trainTargetsClass) # Effettuo l'addestramento per la classificazione
-    print("Baseline Classifier addestrato.")
-else:
-    print("Dati di training per baseline mancanti o vuoti.")
-
-# Definizione del modello SVR semantico con kernel precalcolato e valori di C ed epsilon di default
-svr = SVR(kernel = 'precomputed', C = 1.0, epsilon = 0.1)
-print("Addestramento modello semantico SVR...")
-if KTrain is not None and len(trainTargetsReg) > 0:
-    svr.fit(KTrain, trainTargetsClass)
-    print("Modello semantico SVR addestrato.")
-else:
-    print("KTrain o trainTargetsReg mancanti per SVR.")
-
-# Definizione del modello SVC semantico con kernel precalcolato, valore di C di default e misure di probabilità attive
-svc = SVC(kernel = 'precomputed', C = 1.0, probability = True, random_state = 3)
-print("Addestramento modello semantico SVC...")
-if KTrain is not None and len(trainTargetsClass) > 0:
-    svc.fit(KTrain, trainTargetsClass)
-    print("Modello semantico SVC addestrato.")
-else:
-    print("Ktrain o trainTargetsClass mancanti per SVC.")
+rfRegressor = optimizeRFReg(trainBaselineFeatures, trainTargetsReg, baselinePreprocessor)
+rfClassifier = optimizeRFClass(trainBaselineFeatures, trainTargetsClass, baselinePreprocessor)
+svr = optimizeSVR(KTrain, trainTargetsReg)
+svc = optimizeSVC(KTrain, trainTargetsClass)
 
 # Salvataggio dei modelli, se sono stati addestrati (hanno attributo steps per i baseline e support_vectors_ per i modelli semantici)
 if 'rfRegressor' in locals() and hasattr(rfRegressor, 'steps'):
@@ -215,11 +309,50 @@ if 'testIris' in locals() and testIris:
         for iri in testIris:
             f.write(f"{iri}\n")
 
-print("Esempi y_train_reg:", testTargetsReg[:20])
-print("Min/Max y_train_reg:", np.min(testTargetsReg), np.max(testTargetsReg))
-print("Media y_train_reg:", np.mean(testTargetsReg))
+# DIAGNOSTICA
+'''print("ANALISI TARGET")
+print(f"trainTargetsReg stats: mean={np.mean(trainTargetsReg):.2f}, std={np.std(trainTargetsReg):.2f}")
+print(f"testTargetsReg stats: mean={np.mean(testTargetsReg):.2f}, std={np.std(testTargetsClass):.2f}")
+print(f"Range trainTargets: [{np.min(trainTargetsReg):.2f}, {np.max(trainTargetsReg):.2f}]")
+print(f"Range testTargets: [{np.min(testTargetsReg):.2f}, {np.max(testTargetsReg):.2f}]")
 
-print("NaN in y_train_reg:", np.isnan(trainTargetsReg).sum())
-print("NaN in y_test_reg:", np.isnan(testTargetsReg).sum())
-print("NaN in y_train_class:", np.isnan(trainTargetsClass).sum())
-print("NaN in y_test_class:", np.isnan(testTargetsClass).sum())
+print("ANALISI KERNEL")
+print(f"KTrain shape: {KTrain.shape}")
+print(f"KTrain diagonal: {np.diag(KTrain)[:10]}")
+print(f"KTrain range: [{np.min(KTrain):.3f}, {np.max(KTrain):.3f}]")
+print(f"KTrain symmetry check: {np.allclose(KTrain, KTrain.T)}")
+
+plt.figure(figsize=(12, 4))
+plt.subplot(1, 3, 1)
+plt.hist(KTrain.flatten(), bins=50, alpha=0.7)
+plt.title("Distribuzione Valori Kernel")
+plt.xlabel("Valore Similarità")
+
+plt.subplot(1, 3, 2)
+plt.imshow(KTrain[:50, :50], cmap='viridis')
+plt.title("Heatmap Kernel (primi 50x50)")
+plt.colorbar()
+
+plt.subplot(1, 3, 3)
+plt.scatter(testTargetsReg, testTargetsReg, alpha=0.6)
+plt.title("Target Distribution")
+plt.xlabel("Rating Predetto")
+plt.ylabel("Rating Reale")
+plt.tight_layout()
+plt.show()
+
+print("VERIFICA BASELINE PREDICTION")
+baselinePred = np.full_like(testTargetsReg, np.mean(trainTargetsReg))
+baselineMse = np.mean((testTargetsReg - baselinePred)**2)
+print(f"Baseline MSE: {baselineMse:.2f}")
+
+print("CONTROLLO OVERFITTING")
+if hasattr(svr, 'predict'):
+    trainPred = svr.predict(KTrain)
+    trainMse = np.mean((trainTargetsReg - trainPred)**2)
+    testPred = svr.predict(KTest)
+    testMse = np.mean((testTargetsReg - testPred)**2)
+    print(f"Train MSE: {trainMse:.2f}")
+    print(f"Test MSE: {testMse:.2f}")
+    print(f"Overfitting Ratio: {testMse / trainMse:.2f}")
+    '''

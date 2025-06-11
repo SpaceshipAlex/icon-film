@@ -2,28 +2,30 @@ from owlready2 import *
 import datetime
 import os
 import numpy as np
+import pandas as pd
 import math
 import random
+from sklearn.model_selection import train_test_split
 
 ONTO_FILENAME = "movie_rating_ontology.owl"
 ONTO_PATH = os.path.join("ontology", ONTO_FILENAME)
 # Pesi delle similarità tra due film, inseriti intuitivamente, da fare tuning
 SIMILARITY_WEIGHTS = {
-    'directorIdentity': 0.15,
-    'directorExperience': 0.1,
+    'directorIdentity': 0,
+    'directorExperience': 0.15,
     'directorAvgRating': 0.1,
-    'directorNationality': 0.02,
-    'directorCareerPeak': 0.03,
-    'actorJaccard': 0.1,
-    'actorAvgExperience': 0.05,
-    'actorAvgRating': 0.05,
-    'genreJaccard': 0.15,
-    'budget': 0.1,
-    'releaseYear': 0.05,
-    'auteurProject': 0.01,
-    'prestigeProject': 0.02,
-    'provenChemistry': 0.02,
-    'studioJaccard': 0.05
+    'directorNationality': 0,
+    'directorCareerPeak': 0,
+    'actorJaccard': 0,
+    'actorAvgExperience': 0.1,
+    'actorAvgRating': 0.1,
+    'genreJaccard': 0.3,
+    'budget': 0.15,
+    'releaseYear': 0.1,
+    'auteurProject': 0,
+    'prestigeProject': 0,
+    'provenChemistry': 0,
+    'studioJaccard': 0
 }
 
 onto = get_ontology(ONTO_PATH).load()
@@ -33,9 +35,7 @@ def getLinearDecreasingSimilarity(firstValue, secondValue, maxDiff):
     return max(0.0, 1.0 - (abs(firstValue - secondValue)) / maxDiff)
 
 # Calcola la similarità tra i registi di due film, che vale 1 se è lo stesso e 0 altrimenti
-def getDirectorIdentitySimilarity(firstFilmIRI, secondFilmIRI):
-    firstFilm = onto.search_one(iri = f"*{firstFilmIRI.split('#')[1]}")
-    secondFilm = onto.search_one(iri = f"*{secondFilmIRI.split('#')[1]}")
+def getDirectorIdentitySimilarity(firstFilm, secondFilm):
 
     if not firstFilm or not secondFilm or not firstFilm.hasDirector or not secondFilm.hasDirector:
         return 0.0
@@ -43,9 +43,7 @@ def getDirectorIdentitySimilarity(firstFilmIRI, secondFilmIRI):
     return float(firstFilm.hasDirector[0] == secondFilm.hasDirector[0])
 
 # Calcola la similarità tra le esperienze dei registi di due film, LDS con maxDiff 20
-def getDirectorExperienceSimilarity(firstFilmIRI, secondFilmIRI):
-    firstFilm = onto.search_one(iri = f"*{firstFilmIRI.split('#')[1]}")
-    secondFilm = onto.search_one(iri = f"*{secondFilmIRI.split('#')[1]}")
+def getDirectorExperienceSimilarity(firstFilm, secondFilm):
 
     if not firstFilm or not secondFilm or not firstFilm.directorExperienceAtRelease or not secondFilm.directorExperienceAtRelease:
         return 0.0
@@ -53,9 +51,7 @@ def getDirectorExperienceSimilarity(firstFilmIRI, secondFilmIRI):
     return getLinearDecreasingSimilarity(firstFilm.directorExperienceAtRelease, secondFilm.directorExperienceAtRelease, 20)
 
 # Calcola la similarità tra le valutazioni medie dei registi di due film, LDS con maxDiff 3
-def getDirectorRatingSimilarity(firstFilmIRI, secondFilmIRI):
-    firstFilm = onto.search_one(iri = f"*{firstFilmIRI.split('#')[1]}")
-    secondFilm = onto.search_one(iri = f"*{secondFilmIRI.split('#')[1]}")
+def getDirectorRatingSimilarity(firstFilm, secondFilm):
 
     if not firstFilm or not secondFilm or not firstFilm.directorAvgRatingBeforeFilm or not secondFilm.directorAvgRatingBeforeFilm:
         return 0.0
@@ -63,9 +59,7 @@ def getDirectorRatingSimilarity(firstFilmIRI, secondFilmIRI):
     return getLinearDecreasingSimilarity(firstFilm.directorAvgRatingBeforeFilm, secondFilm.directorAvgRatingBeforeFilm, 3)
 
 # Calcola la similarità tra le nazionalità dei due registi, 1 se la stessa e 0 altrimenti
-def getDirectorNationalitySimilarity(firstFilmIRI, secondFilmIRI):
-    firstFilm = onto.search_one(iri = f"*{firstFilmIRI.split('#')[1]}")
-    secondFilm = onto.search_one(iri = f"*{secondFilmIRI.split('#')[1]}")
+def getDirectorNationalitySimilarity(firstFilm, secondFilm):
 
     if not firstFilm or not secondFilm or not firstFilm.hasDirector or not secondFilm.hasDirector \
         or not firstFilm.hasDirector[0].nationality or not firstFilm.hasDirector[0].nationality:
@@ -74,9 +68,7 @@ def getDirectorNationalitySimilarity(firstFilmIRI, secondFilmIRI):
     return float(firstFilm.hasDirector[0].nationality == secondFilm.hasDirector[0].nationality)
 
 # Calcola la similarità tra i picchi di carriera dei registi, 1 se sono o non sono entrambi in picco e 0 altrimenti
-def getDirectorCareerPeakSimilarity(firstFilmIRI, secondFilmIRI):
-    firstFilm = onto.search_one(iri = f"*{firstFilmIRI.split('#')[1]}")
-    secondFilm = onto.search_one(iri = f"*{secondFilmIRI.split('#')[1]}")
+def getDirectorCareerPeakSimilarity(firstFilm, secondFilm):
 
     if not firstFilm or not secondFilm or not firstFilm.hasDirector or not secondFilm.hasDirector \
         or not firstFilm.hasDirector[0].personInCareerPeak or not firstFilm.hasDirector[0].personInCareerPeak:
@@ -86,9 +78,7 @@ def getDirectorCareerPeakSimilarity(firstFilmIRI, secondFilmIRI):
                  or firstFilm.hasDirector[0].personInCareerPeak != secondFilm.hasDirector[0].personInCareerPeak)
 
 # Calcola la similarità di Jaccard tra gli insiemi degli attori dei due film
-def getActorJaccardSimilarity(firstFilmIRI, secondFilmIRI):
-    firstFilm = onto.search_one(iri = f"*{firstFilmIRI.split('#')[1]}")
-    secondFilm = onto.search_one(iri = f"*{secondFilmIRI.split('#')[1]}")
+def getActorJaccardSimilarity(firstFilm, secondFilm):
 
     if not firstFilm or not secondFilm:
         return 0.0
@@ -102,9 +92,7 @@ def getActorJaccardSimilarity(firstFilmIRI, secondFilmIRI):
     return len(firstActors.intersection(secondActors)) / len(firstActors.union(secondActors)) if len(firstActors.union(secondActors)) > 0 else 0.0
 
 # Calcola la similarità tra le esperienze medie degli attori di due film, LDS con maxDiff 20
-def getActorExperienceSimilarity(firstFilmIRI, secondFilmIRI):
-    firstFilm = onto.search_one(iri = f"*{firstFilmIRI.split('#')[1]}")
-    secondFilm = onto.search_one(iri = f"*{secondFilmIRI.split('#')[1]}")
+def getActorExperienceSimilarity(firstFilm, secondFilm):
 
     if not firstFilm or not secondFilm or not firstFilm.actorsAvgExperienceAtRelease or not secondFilm.actorsAvgExperienceAtRelease:
         return 0.0
@@ -112,9 +100,7 @@ def getActorExperienceSimilarity(firstFilmIRI, secondFilmIRI):
     return getLinearDecreasingSimilarity(firstFilm.actorsAvgExperienceAtRelease, secondFilm.actorsAvgExperienceAtRelease, 20)
 
 # Calcola la similarità tra le valutazioni medie degli attori di due film, LDS con maxDiff 3
-def getActorRatingSimilarity(firstFilmIRI, secondFilmIRI):
-    firstFilm = onto.search_one(iri = f"*{firstFilmIRI.split('#')[1]}")
-    secondFilm = onto.search_one(iri = f"*{secondFilmIRI.split('#')[1]}")
+def getActorRatingSimilarity(firstFilm, secondFilm):
 
     if not firstFilm or not secondFilm or not firstFilm.actorsAvgRatingInPrevious2Years or not secondFilm.actorsAvgRatingInPrevious2Years:
         return 0.0
@@ -122,9 +108,7 @@ def getActorRatingSimilarity(firstFilmIRI, secondFilmIRI):
     return getLinearDecreasingSimilarity(firstFilm.actorsAvgRatingInPrevious2Years, secondFilm.actorsAvgRatingInPrevious2Years, 3)
 
 # Calcola la similarità di Jaccard tra gli insiemi dei generi dei due film
-def getGenreJaccardSimilarity(firstFilmIRI, secondFilmIRI):
-    firstFilm = onto.search_one(iri = f"*{firstFilmIRI.split('#')[1]}")
-    secondFilm = onto.search_one(iri = f"*{secondFilmIRI.split('#')[1]}")
+def getGenreJaccardSimilarity(firstFilm, secondFilm):
 
     if not firstFilm or not secondFilm:
         return 0.0
@@ -138,9 +122,7 @@ def getGenreJaccardSimilarity(firstFilmIRI, secondFilmIRI):
     return len(firstGenres.intersection(secondGenres)) / len(firstGenres.union(secondGenres)) if len(firstGenres.union(secondGenres)) > 0 else 0.0
 
 # Calcola la similarità tra i budget di due film, LDS di log(budget + 1) con maxDiff 1.5
-def getBudgetSimilarity(firstFilmIRI, secondFilmIRI):
-    firstFilm = onto.search_one(iri = f"*{firstFilmIRI.split('#')[1]}")
-    secondFilm = onto.search_one(iri = f"*{secondFilmIRI.split('#')[1]}")
+def getBudgetSimilarity(firstFilm, secondFilm):
 
     if not firstFilm or not secondFilm or not firstFilm.budget or not secondFilm.budget:
         return 0.0
@@ -148,9 +130,7 @@ def getBudgetSimilarity(firstFilmIRI, secondFilmIRI):
     return getLinearDecreasingSimilarity(math.log(firstFilm.budget + 1), math.log(secondFilm.budget + 1), 1.5)
 
 # Calcola la similarità tra gli anni di uscita di due film, LDS con maxDiff 10
-def getReleaseYearSimilarity(firstFilmIRI, secondFilmIRI):
-    firstFilm = onto.search_one(iri = f"*{firstFilmIRI.split('#')[1]}")
-    secondFilm = onto.search_one(iri = f"*{secondFilmIRI.split('#')[1]}")
+def getReleaseYearSimilarity(firstFilm, secondFilm):
 
     if not firstFilm or not secondFilm or not firstFilm.releaseDate or not secondFilm.releaseDate:
         return 0.0
@@ -158,9 +138,7 @@ def getReleaseYearSimilarity(firstFilmIRI, secondFilmIRI):
     return getLinearDecreasingSimilarity(firstFilm.releaseDate.year, secondFilm.releaseDate.year, 10)
 
 # Calcola la similarità tra due film a seconda se sono film d'autore, 1 se lo sono o non lo sono entrambi e 0 altrimenti
-def getAuteurProjectSimilarity(firstFilmIRI, secondFilmIRI):
-    firstFilm = onto.search_one(iri = f"*{firstFilmIRI.split('#')[1]}")
-    secondFilm = onto.search_one(iri = f"*{secondFilmIRI.split('#')[1]}")
+def getAuteurProjectSimilarity(firstFilm, secondFilm):
 
     if not firstFilm or not secondFilm or not firstFilm.isAuteurProject or not secondFilm.isAuteurProject:
         return 0.0
@@ -169,9 +147,7 @@ def getAuteurProjectSimilarity(firstFilmIRI, secondFilmIRI):
                  or firstFilm.isAuteurProject != secondFilm.isAuteurProject)
 
 # Calcola la similarità tra due film a seconda se sono film di prestigio, 1 se lo sono o non lo sono entrambi e 0 altrimenti
-def getPrestigeProjectSimilarity(firstFilmIRI, secondFilmIRI):
-    firstFilm = onto.search_one(iri = f"*{firstFilmIRI.split('#')[1]}")
-    secondFilm = onto.search_one(iri = f"*{secondFilmIRI.split('#')[1]}")
+def getPrestigeProjectSimilarity(firstFilm, secondFilm):
 
     if not firstFilm or not secondFilm or not firstFilm.isPrestigeProject or not secondFilm.isPrestigeProject:
         return 0.0
@@ -180,9 +156,7 @@ def getPrestigeProjectSimilarity(firstFilmIRI, secondFilmIRI):
                  or firstFilm.isPrestigeProject != secondFilm.isPrestigeProject)
 
 # Calcola la similarità tra due film a seconda se hanno collaborazioni comprovate, 1 se lo sono o non lo sono entrambi e 0 altrimenti
-def getProvenChemistrySimilarity(firstFilmIRI, secondFilmIRI):
-    firstFilm = onto.search_one(iri = f"*{firstFilmIRI.split('#')[1]}")
-    secondFilm = onto.search_one(iri = f"*{secondFilmIRI.split('#')[1]}")
+def getProvenChemistrySimilarity(firstFilm, secondFilm):
 
     if not firstFilm or not secondFilm or not firstFilm.hasProvenCollaboration or not secondFilm.hasProvenCollaboration:
         return 0.0
@@ -191,9 +165,7 @@ def getProvenChemistrySimilarity(firstFilmIRI, secondFilmIRI):
                  or firstFilm.hasProvenCollaboration != secondFilm.hasProvenCollaboration)
 
 # Calcola la similarità di Jaccard tra gli insiemi degli studi di produzione dei due film
-def getStudioJaccardSimilarity(firstFilmIRI, secondFilmIRI):
-    firstFilm = onto.search_one(iri = f"*{firstFilmIRI.split('#')[1]}")
-    secondFilm = onto.search_one(iri = f"*{secondFilmIRI.split('#')[1]}")
+def getStudioJaccardSimilarity(firstFilm, secondFilm):
 
     if not firstFilm or not secondFilm:
         return 0.0
@@ -207,76 +179,154 @@ def getStudioJaccardSimilarity(firstFilmIRI, secondFilmIRI):
     return len(firstStudios.intersection(secondStudios)) / len(firstStudios.union(secondStudios)) if len(firstStudios.union(secondStudios)) > 0 else 0.0
 
 # Calcola la similarità tra due film con le misure e i pesi definiti in precedenza
-def calcFilmSimilarity(firstFilmIRI, secondFilmIRI, weights):
-    if firstFilmIRI == secondFilmIRI:
+def calcFilmSimilarity(firstFilm, secondFilm, weights):
+    if firstFilm == secondFilm:
         return 1.0
     
     totalSimilarity = 0.0
-    totalSimilarity += getDirectorIdentitySimilarity(firstFilmIRI, secondFilmIRI) * weights.get('directorIdentity', 0)
-    totalSimilarity += getDirectorExperienceSimilarity(firstFilmIRI, secondFilmIRI) * weights.get('directorExperience', 0)
-    totalSimilarity += getDirectorRatingSimilarity(firstFilmIRI, secondFilmIRI) * weights.get('directorAvgRating', 0)
-    totalSimilarity += getDirectorNationalitySimilarity(firstFilmIRI, secondFilmIRI) * weights.get('directorNationality', 0)
-    totalSimilarity += getDirectorCareerPeakSimilarity(firstFilmIRI, secondFilmIRI) * weights.get('directorCareerPeak', 0)
-    totalSimilarity += getActorJaccardSimilarity(firstFilmIRI, secondFilmIRI) * weights.get('actorJaccard', 0)
-    totalSimilarity += getActorExperienceSimilarity(firstFilmIRI, secondFilmIRI) * weights.get('actorAvgExperience', 0)
-    totalSimilarity += getActorRatingSimilarity(firstFilmIRI, secondFilmIRI) * weights.get('actorAvgRating', 0)
-    totalSimilarity += getGenreJaccardSimilarity(firstFilmIRI, secondFilmIRI) * weights.get('genreJaccard', 0)
-    totalSimilarity += getBudgetSimilarity(firstFilmIRI, secondFilmIRI) * weights.get('budget', 0)
-    totalSimilarity += getReleaseYearSimilarity(firstFilmIRI, secondFilmIRI) * weights.get('releaseYear', 0)
-    totalSimilarity += getAuteurProjectSimilarity(firstFilmIRI, secondFilmIRI) * weights.get('auteurProject', 0)
-    totalSimilarity += getPrestigeProjectSimilarity(firstFilmIRI, secondFilmIRI) * weights.get('prestigeProject', 0)
-    totalSimilarity += getProvenChemistrySimilarity(firstFilmIRI, secondFilmIRI) * weights.get('provenChemistry', 0)
-    totalSimilarity += getStudioJaccardSimilarity(firstFilmIRI, secondFilmIRI) * weights.get('studioJaccard', 0)
+    totalSimilarity += getDirectorIdentitySimilarity(firstFilm, secondFilm) * weights.get('directorIdentity', 0)
+    totalSimilarity += getDirectorExperienceSimilarity(firstFilm, secondFilm) * weights.get('directorExperience', 0)
+    totalSimilarity += getDirectorRatingSimilarity(firstFilm, secondFilm) * weights.get('directorAvgRating', 0)
+    totalSimilarity += getDirectorNationalitySimilarity(firstFilm, secondFilm) * weights.get('directorNationality', 0)
+    totalSimilarity += getDirectorCareerPeakSimilarity(firstFilm, secondFilm) * weights.get('directorCareerPeak', 0)
+    totalSimilarity += getActorJaccardSimilarity(firstFilm, secondFilm) * weights.get('actorJaccard', 0)
+    totalSimilarity += getActorExperienceSimilarity(firstFilm, secondFilm) * weights.get('actorAvgExperience', 0)
+    totalSimilarity += getActorRatingSimilarity(firstFilm, secondFilm) * weights.get('actorAvgRating', 0)
+    totalSimilarity += getGenreJaccardSimilarity(firstFilm, secondFilm) * weights.get('genreJaccard', 0)
+    totalSimilarity += getBudgetSimilarity(firstFilm, secondFilm) * weights.get('budget', 0)
+    totalSimilarity += getReleaseYearSimilarity(firstFilm, secondFilm) * weights.get('releaseYear', 0)
+    totalSimilarity += getAuteurProjectSimilarity(firstFilm, secondFilm) * weights.get('auteurProject', 0)
+    totalSimilarity += getPrestigeProjectSimilarity(firstFilm, secondFilm) * weights.get('prestigeProject', 0)
+    totalSimilarity += getProvenChemistrySimilarity(firstFilm, secondFilm) * weights.get('provenChemistry', 0)
+    totalSimilarity += getStudioJaccardSimilarity(firstFilm, secondFilm) * weights.get('studioJaccard', 0)
 
     return totalSimilarity
 
+# Effettua la divisione tra train e test set utilizzando la stratificazione a seconda della valutazione
+# del film, come è stato fatto quando sono stati caricati nella KB
+def splitFilmsStratified(allFilms):
+    print("Inizio splitting dei film in train e test set")
+    filmData = []
+    for film in allFilms:
+        if film.tmdbRating:
+            filmData.append({'iri': film.iri, 'rating': film.tmdbRating})
+    
+    filmDataFrame = pd.DataFrame(filmData)
+    print(f"Numero totale di film con rating: {len(filmDataFrame)}")
+
+    ratingBins = [0, 3.5, 5.5, 6.9, 8.5, 10.0]
+    ratingLabels = ['0-3.5', '3.5-5.5', '5.5-6.9', '6.9-8.5', '8.5-10.0']
+
+    filmDataFrame['ratingBin'] = pd.cut(filmDataFrame['rating'], bins = ratingBins, labels = ratingLabels, right = False, include_lowest = True)
+    if filmDataFrame['ratingBin'].isnull().any():
+        print("Alcuni film non sono stati assegnati ad alcun bin, li rimuovo.")
+        filmDataFrame.dropna(subset = ['ratingBin'], inplace = True)
+    if filmDataFrame.empty:
+        print("Nessun film rimasto dopo l'assegnazione ai bin")
+        exit()
+    
+    print("Stratificazione in corso...")
+    try:
+        trainDataFrame, testDataFrame = train_test_split(
+            filmDataFrame, 
+            test_size = 0.2, # il test set è il 20% del totale
+            stratify = filmDataFrame['ratingBin'],
+            random_state = 3
+        )
+    except ValueError as e:
+        print(f"Errore durante train_test_split stratificato: {e}")
+        print("Effettuo split non stratificato...")
+        trainDataFrame, testDataFrame = train_test_split(
+            filmDataFrame,
+            test_size = 0.2,
+            random_state = 3,
+            shuffle = True
+        )
+    
+    print(F"Split completato, il training set contiene {len(trainDataFrame)} film e il test set {len(testDataFrame)}")
+
+    return trainDataFrame['iri'].tolist(), testDataFrame['iri'].tolist()
+
 ### --- ###
 
-allFilmIris = [f.iri for f in onto.Film.instances()] # carico gli IRI di tutti i film
-if not allFilmIris:
+allFilms = onto.Film.instances() # carico gli tutti i film
+if not allFilms:
     print("Nessun film nella KB, impossibile costruire il kernel.")
     exit()
 
-random.seed(3)
-random.shuffle(allFilmIris)
+# random.seed(3)
+# random.shuffle(allFilms)
 
-splitID = int(len(allFilmIris) * 0.8) # ottengo l'indice dove verrà divisa la lista dei film tra training e test
-trainFilmIris = allFilmIris[:splitID]
-testFilmIris = allFilmIris[splitID:]
+# splitID = int(len(allFilms) * 0.8) # ottengo l'indice dove verrà divisa la lista dei film tra training e test
+# trainFilms = allFilms[:splitID]
+# testFilms = allFilms[splitID:]
 
-if not trainFilmIris or not testFilmIris:
+trainIris, testIris = splitFilmsStratified(allFilms)
+trainFilms = []
+testFilms = []
+
+for iri in trainIris:
+    film = onto.search_one(iri = f"*{iri}")
+    if film:
+        trainFilms.append(film)
+for iri in testIris:
+    film = onto.search_one(iri = f"*{iri}")
+    if film:
+        testFilms.append(film)
+
+if not trainFilms or not testFilms:
     print("Il training e/o test set sono vuoti dopo lo split, impossibile costruire il kernel.")
     exit()
 
-print(f"Inizio costruzione matrici KTrain e KTest, {len(trainFilmIris)} film di training e {len(testFilmIris)} film di test")
+print(f"Inizio costruzione matrici KTrain e KTest, {len(testFilms)} film di training e {len(testFilms)} film di test")
 
-lenTrain = len(trainFilmIris)
+lenTrain = len(trainFilms)
 KTrain = np.zeros((lenTrain, lenTrain))
 
 for i in range(lenTrain):
     for j in range(i, lenTrain):
-        sim = calcFilmSimilarity(trainFilmIris[i], trainFilmIris[j], SIMILARITY_WEIGHTS)
+        sim = calcFilmSimilarity(trainFilms[i], trainFilms[j], SIMILARITY_WEIGHTS)
         KTrain[i, j] = sim
         KTrain[j, i] = sim
     print(f"KTrain: {i+1}/{lenTrain} righe completate")
 
-lenTest = len(testFilmIris)
+lenTest = len(testFilms)
 KTest = np.zeros((lenTest, lenTrain))
 
 for i in range(lenTest):
     for j in range(lenTrain):
-        sim = calcFilmSimilarity(testFilmIris[i], trainFilmIris[j], SIMILARITY_WEIGHTS)
+        sim = calcFilmSimilarity(testFilms[i], trainFilms[j], SIMILARITY_WEIGHTS)
         KTest[i, j] = sim
     print(f"KTest: {i+1}/{lenTest} righe completate")
 
 np.save("kernel/KTrain.npy", KTrain)
 np.save("kernel/KTest.npy", KTest)
 
+print(KTrain.shape)
+print(KTest.shape)
+
 with open("kernel/trainFilmIris.txt", "w") as f:
-    for iri in trainFilmIris:
-        f.write(f"{iri}\n")
+    for film in trainFilms:
+        f.write(f"{film.iri}\n")
 with open("kernel/testFilmIris.txt", "w") as f:
-    for iri in testFilmIris:
-        f.write(f"{iri}\n")
+    for film in testFilms:
+        f.write(f"{film.iri}\n")
 
 print("\nMatrici Kernel e IRI dei film di training e test salvati.")
+
+similarita_budget = []
+similarita_director = []
+similarita_genre = []
+similarita_actor = []
+
+for i in range (lenTrain):
+    for j in range (lenTrain):
+        similarita_budget.append(getBudgetSimilarity(trainFilms[i], trainFilms[j]))
+        similarita_director.append(getDirectorIdentitySimilarity(trainFilms[i], trainFilms[j]))
+        similarita_genre.append(getGenreJaccardSimilarity(trainFilms[i], trainFilms[j]))
+        similarita_actor.append(getActorJaccardSimilarity(trainFilms[i], trainFilms[j]))
+
+print(f"Budget: media {np.mean(similarita_budget):.3f}, std {np.std(similarita_budget):.3f}, % > 0.5 {(np.array(similarita_budget) > 0.5).mean():.3f}")
+print(f"Director: media {np.mean(similarita_director):.3f}, std {np.std(similarita_director):.3f}, % > 0.5 {(np.array(similarita_director) > 0.5).mean():.3f}")
+print(f"Genre: media {np.mean(similarita_genre):.3f}, std {np.std(similarita_genre):.3f}, % > 0.5 {(np.array(similarita_genre) > 0.5).mean():.3f}")
+print(f"Actor: media {np.mean(similarita_actor):.3f}, std {np.std(similarita_actor):.3f}, % > 0.5 {(np.array(similarita_actor) > 0.5).mean():.3f}")
