@@ -163,7 +163,7 @@ def optimizeRFReg(trainBaselineFeatures, trainTargetsReg, preprocessor, cv = 5, 
 
     print("Ottimizzazione RF Regressor in corso...")
     gridSearch.fit(trainBaselineFeatures, trainTargetsReg)
-    print(f"Migliori parametri RF: {gridSearch.best_params_}")
+    print(f"Migliori parametri RF Regressor: {gridSearch.best_params_}")
     print(f"Miglior MAE: {-gridSearch.best_score_:.4f}")
 
     return gridSearch.best_estimator_
@@ -201,7 +201,7 @@ def optimizeRFClass(trainBaselineFeatures, trainTargetsClass, preprocessor, cv =
 
     print("Ottimizzazione RF Classifier in corso...")
     gridSearch.fit(trainBaselineFeatures, trainTargetsClass)
-    print(f"Migliori parametri RF: {gridSearch.best_params_}")
+    print(f"Migliori parametri RF Classifier: {gridSearch.best_params_}")
     print(f"Miglior F1: {-gridSearch.best_score_:.4f}")
 
     return gridSearch.best_estimator_

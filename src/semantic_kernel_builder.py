@@ -10,21 +10,21 @@ ONTO_PATH = os.path.join("ontology", ONTO_FILENAME)
 # Pesi delle similarità tra due film, inseriti dopo una valutazione manuale di quali impattassero di più
 # e di meno la distribuzione delle similarità tra film
 SIMILARITY_WEIGHTS = {
-    'directorIdentity': 0,
-    'directorExperience': 0.15,
-    'directorAvgRating': 0.1,
-    'directorNationality': 0,
-    'directorCareerPeak': 0,
-    'actorJaccard': 0,
-    'actorAvgExperience': 0.1,
-    'actorAvgRating': 0.1,
-    'genreJaccard': 0.3,
-    'budget': 0.15,
-    'releaseYear': 0.1,
-    'auteurProject': 0,
-    'prestigeProject': 0,
-    'provenChemistry': 0,
-    'studioJaccard': 0
+    'directorIdentity': 0.15,
+    'directorExperience': 0.10,
+    'directorAvgRating': 0.10,
+    'directorNationality': 0.02,
+    'directorCareerPeak': 0.03,
+    'actorJaccard': 0.1,
+    'actorAvgExperience': 0.05,
+    'actorAvgRating': 0.05,
+    'genreJaccard': 0.15,
+    'budget': 0.10,
+    'releaseYear': 0.05,
+    'auteurProject': 0.01,
+    'prestigeProject': 0.02,
+    'provenChemistry': 0.02,
+    'studioJaccard': 0.05
 }
 
 onto = get_ontology(ONTO_PATH).load()

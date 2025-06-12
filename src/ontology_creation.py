@@ -21,7 +21,6 @@ with onto: # per evitare di scrivere (namespace = onto) in ogni classe, si scriv
     class Director(Person): pass # sotto-classe di Person
     class Actor(Person): pass
     class Studio(Thing): pass
-    class Award(Thing): pass
     class Genre(Thing): pass
 
     # PROPRIETA'
@@ -43,9 +42,6 @@ with onto: # per evitare di scrivere (namespace = onto) in ogni classe, si scriv
     class producedByStudio(ObjectProperty):
         domain = [Film]
         range = [Studio]
-    class wonAward(ObjectProperty):
-        domain = [Person, Film]
-        range = [Award]
     class hasGenre(ObjectProperty):
         domain = [Film]
         range = [Genre]
@@ -136,14 +132,6 @@ with onto: # per evitare di scrivere (namespace = onto) in ogni classe, si scriv
         range = [int]
     class nFilmsActed(DataProperty, FunctionalProperty):
         domain = [Actor]
-        range = [int]
-
-    # TODO valutare se rimuovere
-    class awardName(DataProperty, FunctionalProperty):
-        domain = [Award]
-        range = [str]
-    class awardYear(DataProperty, FunctionalProperty):
-        domain = [Award]
         range = [int]
     
 onto.save(file = ONTO_PATH, format = "rdfxml")
